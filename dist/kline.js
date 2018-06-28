@@ -1592,10 +1592,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -1604,11 +1600,17 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var DataSource =
 /*#__PURE__*/
 function (_NamedObject) {
+  _inherits(DataSource, _NamedObject);
+
   function DataSource(name) {
     _classCallCheck(this, DataSource);
 
@@ -1642,8 +1644,6 @@ function (_NamedObject) {
     }
   }]);
 
-  _inherits(DataSource, _NamedObject);
-
   return DataSource;
 }(_named_object.NamedObject);
 
@@ -1658,6 +1658,8 @@ DataSource.UpdateMode = {
 var MainDataSource =
 /*#__PURE__*/
 function (_DataSource) {
+  _inherits(MainDataSource, _DataSource);
+
   function MainDataSource(name) {
     var _this;
 
@@ -1867,8 +1869,6 @@ function (_DataSource) {
       this.toolManager.delSelectedObject();
     }
   }]);
-
-  _inherits(MainDataSource, _DataSource);
 
   return MainDataSource;
 }(DataSource);
@@ -2790,15 +2790,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2869,6 +2869,8 @@ Theme.Font = {
 var DarkTheme =
 /*#__PURE__*/
 function (_Theme) {
+  _inherits(DarkTheme, _Theme);
+
   function DarkTheme() {
     var _this;
 
@@ -2920,8 +2922,6 @@ function (_Theme) {
     return _this;
   }
 
-  _inherits(DarkTheme, _Theme);
-
   return DarkTheme;
 }(Theme);
 
@@ -2930,6 +2930,8 @@ exports.DarkTheme = DarkTheme;
 var LightTheme =
 /*#__PURE__*/
 function (_Theme2) {
+  _inherits(LightTheme, _Theme2);
+
   function LightTheme() {
     var _this2;
 
@@ -2978,8 +2980,6 @@ function (_Theme2) {
     _this2._fonts[Theme.Font.Default] = "12px Tahoma";
     return _this2;
   }
-
-  _inherits(LightTheme, _Theme2);
 
   return LightTheme;
 }(Theme);
@@ -3429,15 +3429,15 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3621,6 +3621,8 @@ Template.displayVolume = true;
 var DefaultTemplate =
 /*#__PURE__*/
 function (_Template) {
+  _inherits(DefaultTemplate, _Template);
+
   function DefaultTemplate() {
     _classCallCheck(this, DefaultTemplate);
 
@@ -3655,8 +3657,6 @@ function (_Template) {
       return mgr;
     }
   }]);
-
-  _inherits(DefaultTemplate, _Template);
 
   return DefaultTemplate;
 }(Template);
@@ -4556,10 +4556,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -4568,11 +4564,17 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var CPoint =
 /*#__PURE__*/
 function (_NamedObject) {
+  _inherits(CPoint, _NamedObject);
+
   function CPoint(name) {
     var _this;
 
@@ -4718,8 +4720,6 @@ function (_NamedObject) {
     }
   }]);
 
-  _inherits(CPoint, _NamedObject);
-
   return CPoint;
 }(_named_object.NamedObject);
 
@@ -4764,10 +4764,6 @@ function _superPropBase(object, property) { while (!Object.prototype.hasOwnPrope
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -4776,11 +4772,17 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var CToolObject =
 /*#__PURE__*/
 function (_NamedObject) {
+  _inherits(CToolObject, _NamedObject);
+
   function CToolObject(name) {
     var _this;
 
@@ -5099,8 +5101,6 @@ function (_NamedObject) {
     }
   }]);
 
-  _inherits(CToolObject, _NamedObject);
-
   return CToolObject;
 }(_named_object.NamedObject);
 
@@ -5114,6 +5114,8 @@ CToolObject.state = {
 var CBiToolObject =
 /*#__PURE__*/
 function (_CToolObject) {
+  _inherits(CBiToolObject, _CToolObject);
+
   function CBiToolObject(name) {
     var _this2;
 
@@ -5140,8 +5142,6 @@ function (_CToolObject) {
     }
   }]);
 
-  _inherits(CBiToolObject, _CToolObject);
-
   return CBiToolObject;
 }(CToolObject);
 
@@ -5150,6 +5150,8 @@ exports.CBiToolObject = CBiToolObject;
 var CTriToolObject =
 /*#__PURE__*/
 function (_CToolObject2) {
+  _inherits(CTriToolObject, _CToolObject2);
+
   function CTriToolObject(name) {
     var _this3;
 
@@ -5199,8 +5201,6 @@ function (_CToolObject2) {
     }
   }]);
 
-  _inherits(CTriToolObject, _CToolObject2);
-
   return CTriToolObject;
 }(CToolObject);
 
@@ -5209,6 +5209,8 @@ exports.CTriToolObject = CTriToolObject;
 var CBandLineObject =
 /*#__PURE__*/
 function (_CBiToolObject) {
+  _inherits(CBandLineObject, _CBiToolObject);
+
   function CBandLineObject(name) {
     var _this4;
 
@@ -5247,8 +5249,6 @@ function (_CBiToolObject) {
     }
   }]);
 
-  _inherits(CBandLineObject, _CBiToolObject);
-
   return CBandLineObject;
 }(CBiToolObject);
 
@@ -5257,6 +5257,8 @@ exports.CBandLineObject = CBandLineObject;
 var CBiParallelLineObject =
 /*#__PURE__*/
 function (_CTriToolObject) {
+  _inherits(CBiParallelLineObject, _CTriToolObject);
+
   function CBiParallelLineObject(name) {
     var _this5;
 
@@ -5318,8 +5320,6 @@ function (_CTriToolObject) {
     }
   }]);
 
-  _inherits(CBiParallelLineObject, _CTriToolObject);
-
   return CBiParallelLineObject;
 }(CTriToolObject);
 
@@ -5328,6 +5328,8 @@ exports.CBiParallelLineObject = CBiParallelLineObject;
 var CBiParallelRayLineObject =
 /*#__PURE__*/
 function (_CTriToolObject2) {
+  _inherits(CBiParallelRayLineObject, _CTriToolObject2);
+
   function CBiParallelRayLineObject(name) {
     var _this6;
 
@@ -5394,8 +5396,6 @@ function (_CTriToolObject2) {
     }
   }]);
 
-  _inherits(CBiParallelRayLineObject, _CTriToolObject2);
-
   return CBiParallelRayLineObject;
 }(CTriToolObject);
 
@@ -5404,6 +5404,8 @@ exports.CBiParallelRayLineObject = CBiParallelRayLineObject;
 var CFibFansObject =
 /*#__PURE__*/
 function (_CBiToolObject2) {
+  _inherits(CFibFansObject, _CBiToolObject2);
+
   function CFibFansObject(name) {
     var _this7;
 
@@ -5475,8 +5477,6 @@ function (_CBiToolObject2) {
     }
   }]);
 
-  _inherits(CFibFansObject, _CBiToolObject2);
-
   return CFibFansObject;
 }(CBiToolObject);
 
@@ -5485,6 +5485,8 @@ exports.CFibFansObject = CFibFansObject;
 var CFibRetraceObject =
 /*#__PURE__*/
 function (_CBiToolObject3) {
+  _inherits(CFibRetraceObject, _CBiToolObject3);
+
   function CFibRetraceObject(name) {
     var _this8;
 
@@ -5523,8 +5525,6 @@ function (_CBiToolObject3) {
     }
   }]);
 
-  _inherits(CFibRetraceObject, _CBiToolObject3);
-
   return CFibRetraceObject;
 }(CBiToolObject);
 
@@ -5533,6 +5533,8 @@ exports.CFibRetraceObject = CFibRetraceObject;
 var CHoriRayLineObject =
 /*#__PURE__*/
 function (_CBiToolObject4) {
+  _inherits(CHoriRayLineObject, _CBiToolObject4);
+
   function CHoriRayLineObject(name) {
     var _this9;
 
@@ -5587,8 +5589,6 @@ function (_CBiToolObject4) {
     }
   }]);
 
-  _inherits(CHoriRayLineObject, _CBiToolObject4);
-
   return CHoriRayLineObject;
 }(CBiToolObject);
 
@@ -5597,6 +5597,8 @@ exports.CHoriRayLineObject = CHoriRayLineObject;
 var CHoriSegLineObject =
 /*#__PURE__*/
 function (_CBiToolObject5) {
+  _inherits(CHoriSegLineObject, _CBiToolObject5);
+
   function CHoriSegLineObject(name) {
     var _this10;
 
@@ -5651,8 +5653,6 @@ function (_CBiToolObject5) {
     }
   }]);
 
-  _inherits(CHoriSegLineObject, _CBiToolObject5);
-
   return CHoriSegLineObject;
 }(CBiToolObject);
 
@@ -5661,6 +5661,8 @@ exports.CHoriSegLineObject = CHoriSegLineObject;
 var CHoriStraightLineObject =
 /*#__PURE__*/
 function (_CBiToolObject6) {
+  _inherits(CHoriStraightLineObject, _CBiToolObject6);
+
   function CHoriStraightLineObject(name) {
     var _this11;
 
@@ -5698,8 +5700,6 @@ function (_CBiToolObject6) {
     }
   }]);
 
-  _inherits(CHoriStraightLineObject, _CBiToolObject6);
-
   return CHoriStraightLineObject;
 }(CBiToolObject);
 
@@ -5708,6 +5708,8 @@ exports.CHoriStraightLineObject = CHoriStraightLineObject;
 var CRayLineObject =
 /*#__PURE__*/
 function (_CBiToolObject7) {
+  _inherits(CRayLineObject, _CBiToolObject7);
+
   function CRayLineObject(name) {
     var _this12;
 
@@ -5747,8 +5749,6 @@ function (_CBiToolObject7) {
     }
   }]);
 
-  _inherits(CRayLineObject, _CBiToolObject7);
-
   return CRayLineObject;
 }(CBiToolObject);
 
@@ -5757,6 +5757,8 @@ exports.CRayLineObject = CRayLineObject;
 var CSegLineObject =
 /*#__PURE__*/
 function (_CBiToolObject8) {
+  _inherits(CSegLineObject, _CBiToolObject8);
+
   function CSegLineObject(name) {
     var _this13;
 
@@ -5790,8 +5792,6 @@ function (_CBiToolObject8) {
     }
   }]);
 
-  _inherits(CSegLineObject, _CBiToolObject8);
-
   return CSegLineObject;
 }(CBiToolObject);
 
@@ -5800,6 +5800,8 @@ exports.CSegLineObject = CSegLineObject;
 var CStraightLineObject =
 /*#__PURE__*/
 function (_CBiToolObject9) {
+  _inherits(CStraightLineObject, _CBiToolObject9);
+
   function CStraightLineObject(name) {
     var _this14;
 
@@ -5829,8 +5831,6 @@ function (_CBiToolObject9) {
     }
   }]);
 
-  _inherits(CStraightLineObject, _CBiToolObject9);
-
   return CStraightLineObject;
 }(CBiToolObject);
 
@@ -5839,6 +5839,8 @@ exports.CStraightLineObject = CStraightLineObject;
 var CTriParallelLineObject =
 /*#__PURE__*/
 function (_CTriToolObject3) {
+  _inherits(CTriParallelLineObject, _CTriToolObject3);
+
   function CTriParallelLineObject(name) {
     var _this15;
 
@@ -5933,8 +5935,6 @@ function (_CTriToolObject3) {
     }
   }]);
 
-  _inherits(CTriParallelLineObject, _CTriToolObject3);
-
   return CTriParallelLineObject;
 }(CTriToolObject);
 
@@ -5943,6 +5943,8 @@ exports.CTriParallelLineObject = CTriParallelLineObject;
 var CVertiStraightLineObject =
 /*#__PURE__*/
 function (_CBiToolObject10) {
+  _inherits(CVertiStraightLineObject, _CBiToolObject10);
+
   function CVertiStraightLineObject(name) {
     var _this16;
 
@@ -5980,8 +5982,6 @@ function (_CBiToolObject10) {
     }
   }]);
 
-  _inherits(CVertiStraightLineObject, _CBiToolObject10);
-
   return CVertiStraightLineObject;
 }(CBiToolObject);
 
@@ -5990,6 +5990,8 @@ exports.CVertiStraightLineObject = CVertiStraightLineObject;
 var CPriceLineObject =
 /*#__PURE__*/
 function (_CSegLineObject) {
+  _inherits(CPriceLineObject, _CSegLineObject);
+
   function CPriceLineObject(name) {
     var _this17;
 
@@ -6034,8 +6036,6 @@ function (_CSegLineObject) {
     }
   }]);
 
-  _inherits(CPriceLineObject, _CSegLineObject);
-
   return CPriceLineObject;
 }(CSegLineObject);
 
@@ -6044,6 +6044,8 @@ exports.CPriceLineObject = CPriceLineObject;
 var CArrowLineObject =
 /*#__PURE__*/
 function (_CSegLineObject2) {
+  _inherits(CArrowLineObject, _CSegLineObject2);
+
   function CArrowLineObject(name) {
     var _this18;
 
@@ -6053,8 +6055,6 @@ function (_CSegLineObject2) {
     _this18.drawer = new plotters.DrawArrowLinesPlotter(name, _assertThisInitialized(_assertThisInitialized(_this18)));
     return _this18;
   }
-
-  _inherits(CArrowLineObject, _CSegLineObject2);
 
   return CArrowLineObject;
 }(CSegLineObject);
@@ -6101,10 +6101,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -6113,11 +6109,17 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var Plotter =
 /*#__PURE__*/
 function (_NamedObject) {
+  _inherits(Plotter, _NamedObject);
+
   function Plotter(name) {
     _classCallCheck(this, Plotter);
 
@@ -6250,8 +6252,6 @@ function (_NamedObject) {
     }
   }]);
 
-  _inherits(Plotter, _NamedObject);
-
   return Plotter;
 }(_named_object.NamedObject);
 
@@ -6261,6 +6261,8 @@ Plotter.isChrome = navigator.userAgent.toLowerCase().match(/chrome/) !== null;
 var BackgroundPlotter =
 /*#__PURE__*/
 function (_Plotter) {
+  _inherits(BackgroundPlotter, _Plotter);
+
   function BackgroundPlotter(name) {
     var _this;
 
@@ -6292,8 +6294,6 @@ function (_Plotter) {
     }
   }]);
 
-  _inherits(BackgroundPlotter, _Plotter);
-
   return BackgroundPlotter;
 }(Plotter);
 
@@ -6302,6 +6302,8 @@ exports.BackgroundPlotter = BackgroundPlotter;
 var MainAreaBackgroundPlotter =
 /*#__PURE__*/
 function (_BackgroundPlotter) {
+  _inherits(MainAreaBackgroundPlotter, _BackgroundPlotter);
+
   function MainAreaBackgroundPlotter(name) {
     _classCallCheck(this, MainAreaBackgroundPlotter);
 
@@ -6331,8 +6333,6 @@ function (_BackgroundPlotter) {
     }
   }]);
 
-  _inherits(MainAreaBackgroundPlotter, _BackgroundPlotter);
-
   return MainAreaBackgroundPlotter;
 }(BackgroundPlotter);
 
@@ -6341,6 +6341,8 @@ exports.MainAreaBackgroundPlotter = MainAreaBackgroundPlotter;
 var RangeAreaBackgroundPlotter =
 /*#__PURE__*/
 function (_BackgroundPlotter2) {
+  _inherits(RangeAreaBackgroundPlotter, _BackgroundPlotter2);
+
   function RangeAreaBackgroundPlotter(name) {
     _classCallCheck(this, RangeAreaBackgroundPlotter);
 
@@ -6366,8 +6368,6 @@ function (_BackgroundPlotter2) {
     }
   }]);
 
-  _inherits(RangeAreaBackgroundPlotter, _BackgroundPlotter2);
-
   return RangeAreaBackgroundPlotter;
 }(BackgroundPlotter);
 
@@ -6376,6 +6376,8 @@ exports.RangeAreaBackgroundPlotter = RangeAreaBackgroundPlotter;
 var TimelineAreaBackgroundPlotter =
 /*#__PURE__*/
 function (_BackgroundPlotter3) {
+  _inherits(TimelineAreaBackgroundPlotter, _BackgroundPlotter3);
+
   function TimelineAreaBackgroundPlotter(name) {
     _classCallCheck(this, TimelineAreaBackgroundPlotter);
 
@@ -6395,8 +6397,6 @@ function (_BackgroundPlotter3) {
     }
   }]);
 
-  _inherits(TimelineAreaBackgroundPlotter, _BackgroundPlotter3);
-
   return TimelineAreaBackgroundPlotter;
 }(BackgroundPlotter);
 
@@ -6405,6 +6405,8 @@ exports.TimelineAreaBackgroundPlotter = TimelineAreaBackgroundPlotter;
 var CGridPlotter =
 /*#__PURE__*/
 function (_NamedObject2) {
+  _inherits(CGridPlotter, _NamedObject2);
+
   function CGridPlotter(name) {
     _classCallCheck(this, CGridPlotter);
 
@@ -6456,8 +6458,6 @@ function (_NamedObject2) {
     }
   }]);
 
-  _inherits(CGridPlotter, _NamedObject2);
-
   return CGridPlotter;
 }(_named_object.NamedObject);
 
@@ -6466,6 +6466,8 @@ exports.CGridPlotter = CGridPlotter;
 var CandlestickPlotter =
 /*#__PURE__*/
 function (_NamedObject3) {
+  _inherits(CandlestickPlotter, _NamedObject3);
+
   function CandlestickPlotter(name) {
     _classCallCheck(this, CandlestickPlotter);
 
@@ -6619,8 +6621,6 @@ function (_NamedObject3) {
     }
   }]);
 
-  _inherits(CandlestickPlotter, _NamedObject3);
-
   return CandlestickPlotter;
 }(_named_object.NamedObject);
 
@@ -6629,6 +6629,8 @@ exports.CandlestickPlotter = CandlestickPlotter;
 var CandlestickHLCPlotter =
 /*#__PURE__*/
 function (_Plotter2) {
+  _inherits(CandlestickHLCPlotter, _Plotter2);
+
   function CandlestickHLCPlotter(name) {
     _classCallCheck(this, CandlestickHLCPlotter);
 
@@ -6816,8 +6818,6 @@ function (_Plotter2) {
     }
   }]);
 
-  _inherits(CandlestickHLCPlotter, _Plotter2);
-
   return CandlestickHLCPlotter;
 }(Plotter);
 
@@ -6826,6 +6826,8 @@ exports.CandlestickHLCPlotter = CandlestickHLCPlotter;
 var OHLCPlotter =
 /*#__PURE__*/
 function (_Plotter3) {
+  _inherits(OHLCPlotter, _Plotter3);
+
   function OHLCPlotter(name) {
     _classCallCheck(this, OHLCPlotter);
 
@@ -6967,8 +6969,6 @@ function (_Plotter3) {
     }
   }]);
 
-  _inherits(OHLCPlotter, _Plotter3);
-
   return OHLCPlotter;
 }(Plotter);
 
@@ -6977,6 +6977,8 @@ exports.OHLCPlotter = OHLCPlotter;
 var MainInfoPlotter =
 /*#__PURE__*/
 function (_Plotter4) {
+  _inherits(MainInfoPlotter, _Plotter4);
+
   function MainInfoPlotter(name) {
     _classCallCheck(this, MainInfoPlotter);
 
@@ -7140,8 +7142,6 @@ function (_Plotter4) {
     }
   }]);
 
-  _inherits(MainInfoPlotter, _Plotter4);
-
   return MainInfoPlotter;
 }(Plotter);
 
@@ -7150,6 +7150,8 @@ exports.MainInfoPlotter = MainInfoPlotter;
 var IndicatorPlotter =
 /*#__PURE__*/
 function (_NamedObject4) {
+  _inherits(IndicatorPlotter, _NamedObject4);
+
   function IndicatorPlotter(name) {
     _classCallCheck(this, IndicatorPlotter);
 
@@ -7417,8 +7419,6 @@ function (_NamedObject4) {
     }
   }]);
 
-  _inherits(IndicatorPlotter, _NamedObject4);
-
   return IndicatorPlotter;
 }(_named_object.NamedObject);
 
@@ -7427,6 +7427,8 @@ exports.IndicatorPlotter = IndicatorPlotter;
 var IndicatorInfoPlotter =
 /*#__PURE__*/
 function (_Plotter5) {
+  _inherits(IndicatorInfoPlotter, _Plotter5);
+
   function IndicatorInfoPlotter(name) {
     _classCallCheck(this, IndicatorInfoPlotter);
 
@@ -7499,8 +7501,6 @@ function (_Plotter5) {
     }
   }]);
 
-  _inherits(IndicatorInfoPlotter, _Plotter5);
-
   return IndicatorInfoPlotter;
 }(Plotter);
 
@@ -7509,6 +7509,8 @@ exports.IndicatorInfoPlotter = IndicatorInfoPlotter;
 var MinMaxPlotter =
 /*#__PURE__*/
 function (_NamedObject5) {
+  _inherits(MinMaxPlotter, _NamedObject5);
+
   function MinMaxPlotter(name) {
     _classCallCheck(this, MinMaxPlotter);
 
@@ -7565,8 +7567,6 @@ function (_NamedObject5) {
     }
   }]);
 
-  _inherits(MinMaxPlotter, _NamedObject5);
-
   return MinMaxPlotter;
 }(_named_object.NamedObject);
 
@@ -7575,6 +7575,8 @@ exports.MinMaxPlotter = MinMaxPlotter;
 var TimelinePlotter =
 /*#__PURE__*/
 function (_Plotter6) {
+  _inherits(TimelinePlotter, _Plotter6);
+
   function TimelinePlotter(name) {
     _classCallCheck(this, TimelinePlotter);
 
@@ -7669,8 +7671,6 @@ function (_Plotter6) {
     }
   }]);
 
-  _inherits(TimelinePlotter, _Plotter6);
-
   return TimelinePlotter;
 }(Plotter);
 
@@ -7697,6 +7697,8 @@ TimelinePlotter.MonthConvert = {
 var RangePlotter =
 /*#__PURE__*/
 function (_NamedObject6) {
+  _inherits(RangePlotter, _NamedObject6);
+
   function RangePlotter(name) {
     _classCallCheck(this, RangePlotter);
 
@@ -7763,8 +7765,6 @@ function (_NamedObject6) {
     }
   }]);
 
-  _inherits(RangePlotter, _NamedObject6);
-
   return RangePlotter;
 }(_named_object.NamedObject);
 
@@ -7773,6 +7773,8 @@ exports.RangePlotter = RangePlotter;
 var COrderGraphPlotter =
 /*#__PURE__*/
 function (_NamedObject7) {
+  _inherits(COrderGraphPlotter, _NamedObject7);
+
   function COrderGraphPlotter(name) {
     _classCallCheck(this, COrderGraphPlotter);
 
@@ -8129,8 +8131,6 @@ function (_NamedObject7) {
     }
   }]);
 
-  _inherits(COrderGraphPlotter, _NamedObject7);
-
   return COrderGraphPlotter;
 }(_named_object.NamedObject);
 
@@ -8139,6 +8139,8 @@ exports.COrderGraphPlotter = COrderGraphPlotter;
 var LastVolumePlotter =
 /*#__PURE__*/
 function (_Plotter7) {
+  _inherits(LastVolumePlotter, _Plotter7);
+
   function LastVolumePlotter(name) {
     _classCallCheck(this, LastVolumePlotter);
 
@@ -8173,8 +8175,6 @@ function (_Plotter7) {
     }
   }]);
 
-  _inherits(LastVolumePlotter, _Plotter7);
-
   return LastVolumePlotter;
 }(Plotter);
 
@@ -8183,6 +8183,8 @@ exports.LastVolumePlotter = LastVolumePlotter;
 var LastClosePlotter =
 /*#__PURE__*/
 function (_Plotter8) {
+  _inherits(LastClosePlotter, _Plotter8);
+
   function LastClosePlotter(name) {
     _classCallCheck(this, LastClosePlotter);
 
@@ -8218,8 +8220,6 @@ function (_Plotter8) {
     }
   }]);
 
-  _inherits(LastClosePlotter, _Plotter8);
-
   return LastClosePlotter;
 }(Plotter);
 
@@ -8228,6 +8228,8 @@ exports.LastClosePlotter = LastClosePlotter;
 var SelectionPlotter =
 /*#__PURE__*/
 function (_Plotter9) {
+  _inherits(SelectionPlotter, _Plotter9);
+
   function SelectionPlotter(name) {
     _classCallCheck(this, SelectionPlotter);
 
@@ -8263,8 +8265,6 @@ function (_Plotter9) {
     }
   }]);
 
-  _inherits(SelectionPlotter, _Plotter9);
-
   return SelectionPlotter;
 }(Plotter);
 
@@ -8273,6 +8273,8 @@ exports.SelectionPlotter = SelectionPlotter;
 var TimelineSelectionPlotter =
 /*#__PURE__*/
 function (_Plotter10) {
+  _inherits(TimelineSelectionPlotter, _Plotter10);
+
   function TimelineSelectionPlotter(name) {
     _classCallCheck(this, TimelineSelectionPlotter);
 
@@ -8337,8 +8339,6 @@ function (_Plotter10) {
     }
   }]);
 
-  _inherits(TimelineSelectionPlotter, _Plotter10);
-
   return TimelineSelectionPlotter;
 }(Plotter);
 
@@ -8361,6 +8361,8 @@ TimelineSelectionPlotter.MonthConvert = {
 var RangeSelectionPlotter =
 /*#__PURE__*/
 function (_NamedObject8) {
+  _inherits(RangeSelectionPlotter, _NamedObject8);
+
   function RangeSelectionPlotter(name) {
     _classCallCheck(this, RangeSelectionPlotter);
 
@@ -8428,8 +8430,6 @@ function (_NamedObject8) {
     }
   }]);
 
-  _inherits(RangeSelectionPlotter, _NamedObject8);
-
   return RangeSelectionPlotter;
 }(_named_object.NamedObject);
 
@@ -8438,6 +8438,8 @@ exports.RangeSelectionPlotter = RangeSelectionPlotter;
 var CToolPlotter =
 /*#__PURE__*/
 function (_NamedObject9) {
+  _inherits(CToolPlotter, _NamedObject9);
+
   function CToolPlotter(name, toolObject) {
     var _this2;
 
@@ -8648,8 +8650,6 @@ function (_NamedObject9) {
     }
   }]);
 
-  _inherits(CToolPlotter, _NamedObject9);
-
   return CToolPlotter;
 }(_named_object.NamedObject);
 
@@ -8658,6 +8658,8 @@ exports.CToolPlotter = CToolPlotter;
 var DrawStraightLinesPlotter =
 /*#__PURE__*/
 function (_CToolPlotter) {
+  _inherits(DrawStraightLinesPlotter, _CToolPlotter);
+
   function DrawStraightLinesPlotter(name, toolObject) {
     var _this3;
 
@@ -8690,8 +8692,6 @@ function (_CToolPlotter) {
     }
   }]);
 
-  _inherits(DrawStraightLinesPlotter, _CToolPlotter);
-
   return DrawStraightLinesPlotter;
 }(CToolPlotter);
 
@@ -8700,6 +8700,8 @@ exports.DrawStraightLinesPlotter = DrawStraightLinesPlotter;
 var DrawSegLinesPlotter =
 /*#__PURE__*/
 function (_CToolPlotter2) {
+  _inherits(DrawSegLinesPlotter, _CToolPlotter2);
+
   function DrawSegLinesPlotter(name, toolObject) {
     var _this4;
 
@@ -8730,8 +8732,6 @@ function (_CToolPlotter2) {
     }
   }]);
 
-  _inherits(DrawSegLinesPlotter, _CToolPlotter2);
-
   return DrawSegLinesPlotter;
 }(CToolPlotter);
 
@@ -8740,6 +8740,8 @@ exports.DrawSegLinesPlotter = DrawSegLinesPlotter;
 var DrawRayLinesPlotter =
 /*#__PURE__*/
 function (_CToolPlotter3) {
+  _inherits(DrawRayLinesPlotter, _CToolPlotter3);
+
   function DrawRayLinesPlotter(name, toolObject) {
     var _this5;
 
@@ -8771,8 +8773,6 @@ function (_CToolPlotter3) {
     }
   }]);
 
-  _inherits(DrawRayLinesPlotter, _CToolPlotter3);
-
   return DrawRayLinesPlotter;
 }(CToolPlotter);
 
@@ -8781,6 +8781,8 @@ exports.DrawRayLinesPlotter = DrawRayLinesPlotter;
 var DrawArrowLinesPlotter =
 /*#__PURE__*/
 function (_CToolPlotter4) {
+  _inherits(DrawArrowLinesPlotter, _CToolPlotter4);
+
   function DrawArrowLinesPlotter(name, toolObject) {
     var _this6;
 
@@ -8841,8 +8843,6 @@ function (_CToolPlotter4) {
     }
   }]);
 
-  _inherits(DrawArrowLinesPlotter, _CToolPlotter4);
-
   return DrawArrowLinesPlotter;
 }(CToolPlotter);
 
@@ -8851,6 +8851,8 @@ exports.DrawArrowLinesPlotter = DrawArrowLinesPlotter;
 var DrawHoriStraightLinesPlotter =
 /*#__PURE__*/
 function (_CToolPlotter5) {
+  _inherits(DrawHoriStraightLinesPlotter, _CToolPlotter5);
+
   function DrawHoriStraightLinesPlotter(name, toolObject) {
     var _this7;
 
@@ -8876,8 +8878,6 @@ function (_CToolPlotter5) {
     }
   }]);
 
-  _inherits(DrawHoriStraightLinesPlotter, _CToolPlotter5);
-
   return DrawHoriStraightLinesPlotter;
 }(CToolPlotter);
 
@@ -8886,6 +8886,8 @@ exports.DrawHoriStraightLinesPlotter = DrawHoriStraightLinesPlotter;
 var DrawHoriRayLinesPlotter =
 /*#__PURE__*/
 function (_CToolPlotter6) {
+  _inherits(DrawHoriRayLinesPlotter, _CToolPlotter6);
+
   function DrawHoriRayLinesPlotter(name, toolObject) {
     var _this8;
 
@@ -8921,8 +8923,6 @@ function (_CToolPlotter6) {
     }
   }]);
 
-  _inherits(DrawHoriRayLinesPlotter, _CToolPlotter6);
-
   return DrawHoriRayLinesPlotter;
 }(CToolPlotter);
 
@@ -8931,6 +8931,8 @@ exports.DrawHoriRayLinesPlotter = DrawHoriRayLinesPlotter;
 var DrawHoriSegLinesPlotter =
 /*#__PURE__*/
 function (_CToolPlotter7) {
+  _inherits(DrawHoriSegLinesPlotter, _CToolPlotter7);
+
   function DrawHoriSegLinesPlotter(name, toolObject) {
     var _this9;
 
@@ -8962,8 +8964,6 @@ function (_CToolPlotter7) {
     }
   }]);
 
-  _inherits(DrawHoriSegLinesPlotter, _CToolPlotter7);
-
   return DrawHoriSegLinesPlotter;
 }(CToolPlotter);
 
@@ -8972,6 +8972,8 @@ exports.DrawHoriSegLinesPlotter = DrawHoriSegLinesPlotter;
 var DrawVertiStraightLinesPlotter =
 /*#__PURE__*/
 function (_CToolPlotter8) {
+  _inherits(DrawVertiStraightLinesPlotter, _CToolPlotter8);
+
   function DrawVertiStraightLinesPlotter(name, toolObject) {
     var _this10;
 
@@ -8997,8 +8999,6 @@ function (_CToolPlotter8) {
     }
   }]);
 
-  _inherits(DrawVertiStraightLinesPlotter, _CToolPlotter8);
-
   return DrawVertiStraightLinesPlotter;
 }(CToolPlotter);
 
@@ -9007,6 +9007,8 @@ exports.DrawVertiStraightLinesPlotter = DrawVertiStraightLinesPlotter;
 var DrawPriceLinesPlotter =
 /*#__PURE__*/
 function (_CToolPlotter9) {
+  _inherits(DrawPriceLinesPlotter, _CToolPlotter9);
+
   function DrawPriceLinesPlotter(name, toolObject) {
     var _this11;
 
@@ -9037,8 +9039,6 @@ function (_CToolPlotter9) {
     }
   }]);
 
-  _inherits(DrawPriceLinesPlotter, _CToolPlotter9);
-
   return DrawPriceLinesPlotter;
 }(CToolPlotter);
 
@@ -9047,6 +9047,8 @@ exports.DrawPriceLinesPlotter = DrawPriceLinesPlotter;
 var ParallelLinesPlotter =
 /*#__PURE__*/
 function (_CToolPlotter10) {
+  _inherits(ParallelLinesPlotter, _CToolPlotter10);
+
   function ParallelLinesPlotter(name, toolObject) {
     var _this12;
 
@@ -9075,8 +9077,6 @@ function (_CToolPlotter10) {
     }
   }]);
 
-  _inherits(ParallelLinesPlotter, _CToolPlotter10);
-
   return ParallelLinesPlotter;
 }(CToolPlotter);
 
@@ -9085,6 +9085,8 @@ exports.ParallelLinesPlotter = ParallelLinesPlotter;
 var DrawBiParallelLinesPlotter =
 /*#__PURE__*/
 function (_ParallelLinesPlotter) {
+  _inherits(DrawBiParallelLinesPlotter, _ParallelLinesPlotter);
+
   function DrawBiParallelLinesPlotter(name, toolObject) {
     var _this13;
 
@@ -9117,8 +9119,6 @@ function (_ParallelLinesPlotter) {
     }
   }]);
 
-  _inherits(DrawBiParallelLinesPlotter, _ParallelLinesPlotter);
-
   return DrawBiParallelLinesPlotter;
 }(ParallelLinesPlotter);
 
@@ -9127,6 +9127,8 @@ exports.DrawBiParallelLinesPlotter = DrawBiParallelLinesPlotter;
 var DrawBiParallelRayLinesPlotter =
 /*#__PURE__*/
 function (_ParallelLinesPlotter2) {
+  _inherits(DrawBiParallelRayLinesPlotter, _ParallelLinesPlotter2);
+
   function DrawBiParallelRayLinesPlotter(name, toolObject) {
     var _this14;
 
@@ -9161,8 +9163,6 @@ function (_ParallelLinesPlotter2) {
     }
   }]);
 
-  _inherits(DrawBiParallelRayLinesPlotter, _ParallelLinesPlotter2);
-
   return DrawBiParallelRayLinesPlotter;
 }(ParallelLinesPlotter);
 
@@ -9171,6 +9171,8 @@ exports.DrawBiParallelRayLinesPlotter = DrawBiParallelRayLinesPlotter;
 var DrawTriParallelLinesPlotter =
 /*#__PURE__*/
 function (_ParallelLinesPlotter3) {
+  _inherits(DrawTriParallelLinesPlotter, _ParallelLinesPlotter3);
+
   function DrawTriParallelLinesPlotter(name, toolObject) {
     var _this15;
 
@@ -9228,8 +9230,6 @@ function (_ParallelLinesPlotter3) {
     }
   }]);
 
-  _inherits(DrawTriParallelLinesPlotter, _ParallelLinesPlotter3);
-
   return DrawTriParallelLinesPlotter;
 }(ParallelLinesPlotter);
 
@@ -9238,6 +9238,8 @@ exports.DrawTriParallelLinesPlotter = DrawTriParallelLinesPlotter;
 var BandLinesPlotter =
 /*#__PURE__*/
 function (_CToolPlotter11) {
+  _inherits(BandLinesPlotter, _CToolPlotter11);
+
   function BandLinesPlotter(name, toolObject) {
     var _this16;
 
@@ -9288,8 +9290,6 @@ function (_CToolPlotter11) {
     }
   }]);
 
-  _inherits(BandLinesPlotter, _CToolPlotter11);
-
   return BandLinesPlotter;
 }(CToolPlotter);
 
@@ -9298,6 +9298,8 @@ exports.BandLinesPlotter = BandLinesPlotter;
 var DrawFibRetracePlotter =
 /*#__PURE__*/
 function (_BandLinesPlotter) {
+  _inherits(DrawFibRetracePlotter, _BandLinesPlotter);
+
   function DrawFibRetracePlotter(name, toolObject) {
     var _this17;
 
@@ -9309,8 +9311,6 @@ function (_BandLinesPlotter) {
     return _this17;
   }
 
-  _inherits(DrawFibRetracePlotter, _BandLinesPlotter);
-
   return DrawFibRetracePlotter;
 }(BandLinesPlotter);
 
@@ -9319,6 +9319,8 @@ exports.DrawFibRetracePlotter = DrawFibRetracePlotter;
 var DrawBandLinesPlotter =
 /*#__PURE__*/
 function (_BandLinesPlotter2) {
+  _inherits(DrawBandLinesPlotter, _BandLinesPlotter2);
+
   function DrawBandLinesPlotter(name, toolObject) {
     var _this18;
 
@@ -9330,8 +9332,6 @@ function (_BandLinesPlotter2) {
     return _this18;
   }
 
-  _inherits(DrawBandLinesPlotter, _BandLinesPlotter2);
-
   return DrawBandLinesPlotter;
 }(BandLinesPlotter);
 
@@ -9340,6 +9340,8 @@ exports.DrawBandLinesPlotter = DrawBandLinesPlotter;
 var DrawFibFansPlotter =
 /*#__PURE__*/
 function (_CToolPlotter12) {
+  _inherits(DrawFibFansPlotter, _CToolPlotter12);
+
   function DrawFibFansPlotter(name, toolObject) {
     var _this19;
 
@@ -9377,8 +9379,6 @@ function (_CToolPlotter12) {
     }
   }]);
 
-  _inherits(DrawFibFansPlotter, _CToolPlotter12);
-
   return DrawFibFansPlotter;
 }(CToolPlotter);
 
@@ -9387,6 +9387,8 @@ exports.DrawFibFansPlotter = DrawFibFansPlotter;
 var CDynamicLinePlotter =
 /*#__PURE__*/
 function (_NamedObject10) {
+  _inherits(CDynamicLinePlotter, _NamedObject10);
+
   function CDynamicLinePlotter(name) {
     var _this20;
 
@@ -9464,8 +9466,6 @@ function (_NamedObject10) {
     }
   }]);
 
-  _inherits(CDynamicLinePlotter, _NamedObject10);
-
   return CDynamicLinePlotter;
 }(_named_object.NamedObject);
 
@@ -9497,10 +9497,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -9509,11 +9505,17 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var DataProvider =
 /*#__PURE__*/
 function (_NamedObject) {
+  _inherits(DataProvider, _NamedObject);
+
   function DataProvider(name) {
     var _this;
 
@@ -9618,8 +9620,6 @@ function (_NamedObject) {
     }
   }]);
 
-  _inherits(DataProvider, _NamedObject);
-
   return DataProvider;
 }(_named_object.NamedObject);
 
@@ -9628,6 +9628,8 @@ exports.DataProvider = DataProvider;
 var MainDataProvider =
 /*#__PURE__*/
 function (_DataProvider) {
+  _inherits(MainDataProvider, _DataProvider);
+
   function MainDataProvider(name) {
     var _this2;
 
@@ -9661,8 +9663,6 @@ function (_DataProvider) {
     }
   }]);
 
-  _inherits(MainDataProvider, _DataProvider);
-
   return MainDataProvider;
 }(DataProvider);
 
@@ -9671,6 +9671,8 @@ exports.MainDataProvider = MainDataProvider;
 var IndicatorDataProvider =
 /*#__PURE__*/
 function (_DataProvider2) {
+  _inherits(IndicatorDataProvider, _DataProvider2);
+
   function IndicatorDataProvider() {
     _classCallCheck(this, IndicatorDataProvider);
 
@@ -9779,8 +9781,6 @@ function (_DataProvider2) {
     }
   }]);
 
-  _inherits(IndicatorDataProvider, _DataProvider2);
-
   return IndicatorDataProvider;
 }(DataProvider);
 
@@ -9812,10 +9812,6 @@ function _superPropBase(object, property) { while (!Object.prototype.hasOwnPrope
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -9824,11 +9820,17 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var ChartArea =
 /*#__PURE__*/
 function (_NamedObject) {
+  _inherits(ChartArea, _NamedObject);
+
   function ChartArea(name) {
     var _this;
 
@@ -10061,8 +10063,6 @@ function (_NamedObject) {
     }
   }]);
 
-  _inherits(ChartArea, _NamedObject);
-
   return ChartArea;
 }(_named_object.NamedObject);
 
@@ -10078,6 +10078,8 @@ ChartArea.DockStyle = {
 var MainArea =
 /*#__PURE__*/
 function (_ChartArea) {
+  _inherits(MainArea, _ChartArea);
+
   function MainArea(name) {
     var _this2;
 
@@ -10159,8 +10161,6 @@ function (_ChartArea) {
     }
   }]);
 
-  _inherits(MainArea, _ChartArea);
-
   return MainArea;
 }(ChartArea);
 
@@ -10169,6 +10169,8 @@ exports.MainArea = MainArea;
 var IndicatorArea =
 /*#__PURE__*/
 function (_ChartArea2) {
+  _inherits(IndicatorArea, _ChartArea2);
+
   function IndicatorArea(name) {
     var _this3;
 
@@ -10239,8 +10241,6 @@ function (_ChartArea2) {
     }
   }]);
 
-  _inherits(IndicatorArea, _ChartArea2);
-
   return IndicatorArea;
 }(ChartArea);
 
@@ -10249,6 +10249,8 @@ exports.IndicatorArea = IndicatorArea;
 var MainRangeArea =
 /*#__PURE__*/
 function (_ChartArea3) {
+  _inherits(MainRangeArea, _ChartArea3);
+
   function MainRangeArea(name) {
     _classCallCheck(this, MainRangeArea);
 
@@ -10264,8 +10266,6 @@ function (_ChartArea3) {
     }
   }]);
 
-  _inherits(MainRangeArea, _ChartArea3);
-
   return MainRangeArea;
 }(ChartArea);
 
@@ -10274,6 +10274,8 @@ exports.MainRangeArea = MainRangeArea;
 var IndicatorRangeArea =
 /*#__PURE__*/
 function (_ChartArea4) {
+  _inherits(IndicatorRangeArea, _ChartArea4);
+
   function IndicatorRangeArea(name) {
     _classCallCheck(this, IndicatorRangeArea);
 
@@ -10289,8 +10291,6 @@ function (_ChartArea4) {
     }
   }]);
 
-  _inherits(IndicatorRangeArea, _ChartArea4);
-
   return IndicatorRangeArea;
 }(ChartArea);
 
@@ -10299,6 +10299,8 @@ exports.IndicatorRangeArea = IndicatorRangeArea;
 var TimelineArea =
 /*#__PURE__*/
 function (_ChartArea5) {
+  _inherits(TimelineArea, _ChartArea5);
+
   function TimelineArea(name) {
     _classCallCheck(this, TimelineArea);
 
@@ -10314,8 +10316,6 @@ function (_ChartArea5) {
     }
   }]);
 
-  _inherits(TimelineArea, _ChartArea5);
-
   return TimelineArea;
 }(ChartArea);
 
@@ -10324,6 +10324,8 @@ exports.TimelineArea = TimelineArea;
 var ChartAreaGroup =
 /*#__PURE__*/
 function (_ChartArea6) {
+  _inherits(ChartAreaGroup, _ChartArea6);
+
   function ChartAreaGroup(name) {
     var _this4;
 
@@ -10481,8 +10483,6 @@ function (_ChartArea6) {
       return null;
     }
   }]);
-
-  _inherits(ChartAreaGroup, _ChartArea6);
 
   return ChartAreaGroup;
 }(ChartArea);
@@ -13081,15 +13081,15 @@ function _get(target, property, receiver) { if (typeof Reflect !== "undefined" &
 
 function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -13173,6 +13173,8 @@ exports.Expr = Expr;
 var OpenExpr =
 /*#__PURE__*/
 function (_Expr) {
+  _inherits(OpenExpr, _Expr);
+
   function OpenExpr() {
     _classCallCheck(this, OpenExpr);
 
@@ -13186,8 +13188,6 @@ function (_Expr) {
     }
   }]);
 
-  _inherits(OpenExpr, _Expr);
-
   return OpenExpr;
 }(Expr);
 
@@ -13196,6 +13196,8 @@ exports.OpenExpr = OpenExpr;
 var HighExpr =
 /*#__PURE__*/
 function (_Expr2) {
+  _inherits(HighExpr, _Expr2);
+
   function HighExpr() {
     _classCallCheck(this, HighExpr);
 
@@ -13209,8 +13211,6 @@ function (_Expr2) {
     }
   }]);
 
-  _inherits(HighExpr, _Expr2);
-
   return HighExpr;
 }(Expr);
 
@@ -13219,6 +13219,8 @@ exports.HighExpr = HighExpr;
 var LowExpr =
 /*#__PURE__*/
 function (_Expr3) {
+  _inherits(LowExpr, _Expr3);
+
   function LowExpr() {
     _classCallCheck(this, LowExpr);
 
@@ -13232,8 +13234,6 @@ function (_Expr3) {
     }
   }]);
 
-  _inherits(LowExpr, _Expr3);
-
   return LowExpr;
 }(Expr);
 
@@ -13242,6 +13242,8 @@ exports.LowExpr = LowExpr;
 var CloseExpr =
 /*#__PURE__*/
 function (_Expr4) {
+  _inherits(CloseExpr, _Expr4);
+
   function CloseExpr() {
     _classCallCheck(this, CloseExpr);
 
@@ -13255,8 +13257,6 @@ function (_Expr4) {
     }
   }]);
 
-  _inherits(CloseExpr, _Expr4);
-
   return CloseExpr;
 }(Expr);
 
@@ -13265,6 +13265,8 @@ exports.CloseExpr = CloseExpr;
 var VolumeExpr =
 /*#__PURE__*/
 function (_Expr5) {
+  _inherits(VolumeExpr, _Expr5);
+
   function VolumeExpr() {
     _classCallCheck(this, VolumeExpr);
 
@@ -13278,8 +13280,6 @@ function (_Expr5) {
     }
   }]);
 
-  _inherits(VolumeExpr, _Expr5);
-
   return VolumeExpr;
 }(Expr);
 
@@ -13288,6 +13288,8 @@ exports.VolumeExpr = VolumeExpr;
 var ConstExpr =
 /*#__PURE__*/
 function (_Expr6) {
+  _inherits(ConstExpr, _Expr6);
+
   function ConstExpr(v) {
     var _this;
 
@@ -13305,8 +13307,6 @@ function (_Expr6) {
     }
   }]);
 
-  _inherits(ConstExpr, _Expr6);
-
   return ConstExpr;
 }(Expr);
 
@@ -13315,6 +13315,8 @@ exports.ConstExpr = ConstExpr;
 var ParameterExpr =
 /*#__PURE__*/
 function (_Expr7) {
+  _inherits(ParameterExpr, _Expr7);
+
   function ParameterExpr(name, minValue, maxValue, defaultValue) {
     var _this2;
 
@@ -13360,8 +13362,6 @@ function (_Expr7) {
     }
   }]);
 
-  _inherits(ParameterExpr, _Expr7);
-
   return ParameterExpr;
 }(Expr);
 
@@ -13370,6 +13370,8 @@ exports.ParameterExpr = ParameterExpr;
 var OpAExpr =
 /*#__PURE__*/
 function (_Expr8) {
+  _inherits(OpAExpr, _Expr8);
+
   function OpAExpr(a) {
     var _this3;
 
@@ -13396,8 +13398,6 @@ function (_Expr8) {
     }
   }]);
 
-  _inherits(OpAExpr, _Expr8);
-
   return OpAExpr;
 }(Expr);
 
@@ -13406,6 +13406,8 @@ exports.OpAExpr = OpAExpr;
 var OpABExpr =
 /*#__PURE__*/
 function (_Expr9) {
+  _inherits(OpABExpr, _Expr9);
+
   function OpABExpr(a, b) {
     var _this4;
 
@@ -13437,8 +13439,6 @@ function (_Expr9) {
     }
   }]);
 
-  _inherits(OpABExpr, _Expr9);
-
   return OpABExpr;
 }(Expr);
 
@@ -13447,6 +13447,8 @@ exports.OpABExpr = OpABExpr;
 var OpABCExpr =
 /*#__PURE__*/
 function (_Expr10) {
+  _inherits(OpABCExpr, _Expr10);
+
   function OpABCExpr(a, b, c) {
     var _this5;
 
@@ -13483,8 +13485,6 @@ function (_Expr10) {
     }
   }]);
 
-  _inherits(OpABCExpr, _Expr10);
-
   return OpABCExpr;
 }(Expr);
 
@@ -13493,6 +13493,8 @@ exports.OpABCExpr = OpABCExpr;
 var OpABCDExpr =
 /*#__PURE__*/
 function (_Expr11) {
+  _inherits(OpABCDExpr, _Expr11);
+
   function OpABCDExpr(a, b, c, d) {
     var _this6;
 
@@ -13534,8 +13536,6 @@ function (_Expr11) {
     }
   }]);
 
-  _inherits(OpABCDExpr, _Expr11);
-
   return OpABCDExpr;
 }(Expr);
 
@@ -13544,6 +13544,8 @@ exports.OpABCDExpr = OpABCDExpr;
 var NegExpr =
 /*#__PURE__*/
 function (_OpAExpr) {
+  _inherits(NegExpr, _OpAExpr);
+
   function NegExpr(a) {
     _classCallCheck(this, NegExpr);
 
@@ -13557,8 +13559,6 @@ function (_OpAExpr) {
     }
   }]);
 
-  _inherits(NegExpr, _OpAExpr);
-
   return NegExpr;
 }(OpAExpr);
 
@@ -13567,6 +13567,8 @@ exports.NegExpr = NegExpr;
 var AddExpr =
 /*#__PURE__*/
 function (_OpABExpr) {
+  _inherits(AddExpr, _OpABExpr);
+
   function AddExpr(a, b) {
     _classCallCheck(this, AddExpr);
 
@@ -13580,8 +13582,6 @@ function (_OpABExpr) {
     }
   }]);
 
-  _inherits(AddExpr, _OpABExpr);
-
   return AddExpr;
 }(OpABExpr);
 
@@ -13590,6 +13590,8 @@ exports.AddExpr = AddExpr;
 var SubExpr =
 /*#__PURE__*/
 function (_OpABExpr2) {
+  _inherits(SubExpr, _OpABExpr2);
+
   function SubExpr(a, b) {
     _classCallCheck(this, SubExpr);
 
@@ -13603,8 +13605,6 @@ function (_OpABExpr2) {
     }
   }]);
 
-  _inherits(SubExpr, _OpABExpr2);
-
   return SubExpr;
 }(OpABExpr);
 
@@ -13613,6 +13613,8 @@ exports.SubExpr = SubExpr;
 var MulExpr =
 /*#__PURE__*/
 function (_OpABExpr3) {
+  _inherits(MulExpr, _OpABExpr3);
+
   function MulExpr(a, b) {
     _classCallCheck(this, MulExpr);
 
@@ -13626,8 +13628,6 @@ function (_OpABExpr3) {
     }
   }]);
 
-  _inherits(MulExpr, _OpABExpr3);
-
   return MulExpr;
 }(OpABExpr);
 
@@ -13636,6 +13636,8 @@ exports.MulExpr = MulExpr;
 var DivExpr =
 /*#__PURE__*/
 function (_OpABExpr4) {
+  _inherits(DivExpr, _OpABExpr4);
+
   function DivExpr(a, b) {
     _classCallCheck(this, DivExpr);
 
@@ -13655,8 +13657,6 @@ function (_OpABExpr4) {
     }
   }]);
 
-  _inherits(DivExpr, _OpABExpr4);
-
   return DivExpr;
 }(OpABExpr);
 
@@ -13665,6 +13665,8 @@ exports.DivExpr = DivExpr;
 var GtExpr =
 /*#__PURE__*/
 function (_OpABExpr5) {
+  _inherits(GtExpr, _OpABExpr5);
+
   function GtExpr(a, b) {
     _classCallCheck(this, GtExpr);
 
@@ -13678,8 +13680,6 @@ function (_OpABExpr5) {
     }
   }]);
 
-  _inherits(GtExpr, _OpABExpr5);
-
   return GtExpr;
 }(OpABExpr);
 
@@ -13688,6 +13688,8 @@ exports.GtExpr = GtExpr;
 var GeExpr =
 /*#__PURE__*/
 function (_OpABExpr6) {
+  _inherits(GeExpr, _OpABExpr6);
+
   function GeExpr(a, b) {
     _classCallCheck(this, GeExpr);
 
@@ -13701,8 +13703,6 @@ function (_OpABExpr6) {
     }
   }]);
 
-  _inherits(GeExpr, _OpABExpr6);
-
   return GeExpr;
 }(OpABExpr);
 
@@ -13711,6 +13711,8 @@ exports.GeExpr = GeExpr;
 var LtExpr =
 /*#__PURE__*/
 function (_OpABExpr7) {
+  _inherits(LtExpr, _OpABExpr7);
+
   function LtExpr(a, b) {
     _classCallCheck(this, LtExpr);
 
@@ -13724,8 +13726,6 @@ function (_OpABExpr7) {
     }
   }]);
 
-  _inherits(LtExpr, _OpABExpr7);
-
   return LtExpr;
 }(OpABExpr);
 
@@ -13734,6 +13734,8 @@ exports.LtExpr = LtExpr;
 var LeExpr =
 /*#__PURE__*/
 function (_OpABExpr8) {
+  _inherits(LeExpr, _OpABExpr8);
+
   function LeExpr(a, b) {
     _classCallCheck(this, LeExpr);
 
@@ -13747,8 +13749,6 @@ function (_OpABExpr8) {
     }
   }]);
 
-  _inherits(LeExpr, _OpABExpr8);
-
   return LeExpr;
 }(OpABExpr);
 
@@ -13757,6 +13757,8 @@ exports.LeExpr = LeExpr;
 var EqExpr =
 /*#__PURE__*/
 function (_OpABExpr9) {
+  _inherits(EqExpr, _OpABExpr9);
+
   function EqExpr(a, b) {
     _classCallCheck(this, EqExpr);
 
@@ -13770,8 +13772,6 @@ function (_OpABExpr9) {
     }
   }]);
 
-  _inherits(EqExpr, _OpABExpr9);
-
   return EqExpr;
 }(OpABExpr);
 
@@ -13780,6 +13780,8 @@ exports.EqExpr = EqExpr;
 var MaxExpr =
 /*#__PURE__*/
 function (_OpABExpr10) {
+  _inherits(MaxExpr, _OpABExpr10);
+
   function MaxExpr(a, b) {
     _classCallCheck(this, MaxExpr);
 
@@ -13793,8 +13795,6 @@ function (_OpABExpr10) {
     }
   }]);
 
-  _inherits(MaxExpr, _OpABExpr10);
-
   return MaxExpr;
 }(OpABExpr);
 
@@ -13803,6 +13803,8 @@ exports.MaxExpr = MaxExpr;
 var AbsExpr =
 /*#__PURE__*/
 function (_OpAExpr2) {
+  _inherits(AbsExpr, _OpAExpr2);
+
   function AbsExpr(a) {
     _classCallCheck(this, AbsExpr);
 
@@ -13816,8 +13818,6 @@ function (_OpAExpr2) {
     }
   }]);
 
-  _inherits(AbsExpr, _OpAExpr2);
-
   return AbsExpr;
 }(OpAExpr);
 
@@ -13826,6 +13826,8 @@ exports.AbsExpr = AbsExpr;
 var RefExpr =
 /*#__PURE__*/
 function (_OpABExpr11) {
+  _inherits(RefExpr, _OpABExpr11);
+
   function RefExpr(a, b) {
     _classCallCheck(this, RefExpr);
 
@@ -13859,8 +13861,6 @@ function (_OpABExpr11) {
     }
   }]);
 
-  _inherits(RefExpr, _OpABExpr11);
-
   return RefExpr;
 }(OpABExpr);
 
@@ -13869,6 +13869,8 @@ exports.RefExpr = RefExpr;
 var AndExpr =
 /*#__PURE__*/
 function (_OpABExpr12) {
+  _inherits(AndExpr, _OpABExpr12);
+
   function AndExpr(a, b) {
     _classCallCheck(this, AndExpr);
 
@@ -13882,8 +13884,6 @@ function (_OpABExpr12) {
     }
   }]);
 
-  _inherits(AndExpr, _OpABExpr12);
-
   return AndExpr;
 }(OpABExpr);
 
@@ -13892,6 +13892,8 @@ exports.AndExpr = AndExpr;
 var OrExpr =
 /*#__PURE__*/
 function (_OpABExpr13) {
+  _inherits(OrExpr, _OpABExpr13);
+
   function OrExpr(a, b) {
     _classCallCheck(this, OrExpr);
 
@@ -13905,8 +13907,6 @@ function (_OpABExpr13) {
     }
   }]);
 
-  _inherits(OrExpr, _OpABExpr13);
-
   return OrExpr;
 }(OpABExpr);
 
@@ -13915,6 +13915,8 @@ exports.OrExpr = OrExpr;
 var IfExpr =
 /*#__PURE__*/
 function (_OpABCExpr) {
+  _inherits(IfExpr, _OpABCExpr);
+
   function IfExpr(a, b, c) {
     _classCallCheck(this, IfExpr);
 
@@ -13928,8 +13930,6 @@ function (_OpABCExpr) {
     }
   }]);
 
-  _inherits(IfExpr, _OpABCExpr);
-
   return IfExpr;
 }(OpABCExpr);
 
@@ -13938,6 +13938,8 @@ exports.IfExpr = IfExpr;
 var AssignExpr =
 /*#__PURE__*/
 function (_OpAExpr3) {
+  _inherits(AssignExpr, _OpAExpr3);
+
   function AssignExpr(name, a) {
     var _this7;
 
@@ -13990,8 +13992,6 @@ function (_OpAExpr3) {
     }
   }]);
 
-  _inherits(AssignExpr, _OpAExpr3);
-
   return AssignExpr;
 }(OpAExpr);
 
@@ -14000,6 +14000,8 @@ exports.AssignExpr = AssignExpr;
 var OutputExpr =
 /*#__PURE__*/
 function (_AssignExpr) {
+  _inherits(OutputExpr, _AssignExpr);
+
   function OutputExpr(name, a, style, color) {
     var _this8;
 
@@ -14023,8 +14025,6 @@ function (_AssignExpr) {
     }
   }]);
 
-  _inherits(OutputExpr, _AssignExpr);
-
   return OutputExpr;
 }(AssignExpr);
 
@@ -14040,6 +14040,8 @@ OutputExpr.outputStyle = {
 var RangeOutputExpr =
 /*#__PURE__*/
 function (_OutputExpr) {
+  _inherits(RangeOutputExpr, _OutputExpr);
+
   function RangeOutputExpr(name, a, style, color) {
     _classCallCheck(this, RangeOutputExpr);
 
@@ -14053,8 +14055,6 @@ function (_OutputExpr) {
     }
   }]);
 
-  _inherits(RangeOutputExpr, _OutputExpr);
-
   return RangeOutputExpr;
 }(OutputExpr);
 
@@ -14063,6 +14063,8 @@ exports.RangeOutputExpr = RangeOutputExpr;
 var RangeExpr =
 /*#__PURE__*/
 function (_OpABExpr14) {
+  _inherits(RangeExpr, _OpABExpr14);
+
   function RangeExpr(a, b) {
     var _this9;
 
@@ -14119,8 +14121,6 @@ function (_OpABExpr14) {
     }
   }]);
 
-  _inherits(RangeExpr, _OpABExpr14);
-
   return RangeExpr;
 }(OpABExpr);
 
@@ -14129,6 +14129,8 @@ exports.RangeExpr = RangeExpr;
 var HhvExpr =
 /*#__PURE__*/
 function (_RangeExpr) {
+  _inherits(HhvExpr, _RangeExpr);
+
   function HhvExpr(a, b) {
     _classCallCheck(this, HhvExpr);
 
@@ -14169,8 +14171,6 @@ function (_RangeExpr) {
     }
   }]);
 
-  _inherits(HhvExpr, _RangeExpr);
-
   return HhvExpr;
 }(RangeExpr);
 
@@ -14179,6 +14179,8 @@ exports.HhvExpr = HhvExpr;
 var LlvExpr =
 /*#__PURE__*/
 function (_RangeExpr2) {
+  _inherits(LlvExpr, _RangeExpr2);
+
   function LlvExpr(a, b) {
     _classCallCheck(this, LlvExpr);
 
@@ -14212,8 +14214,6 @@ function (_RangeExpr2) {
     }
   }]);
 
-  _inherits(LlvExpr, _RangeExpr2);
-
   return LlvExpr;
 }(RangeExpr);
 
@@ -14222,6 +14222,8 @@ exports.LlvExpr = LlvExpr;
 var CountExpr =
 /*#__PURE__*/
 function (_RangeExpr3) {
+  _inherits(CountExpr, _RangeExpr3);
+
   function CountExpr(a, b) {
     _classCallCheck(this, CountExpr);
 
@@ -14253,8 +14255,6 @@ function (_RangeExpr3) {
     }
   }]);
 
-  _inherits(CountExpr, _RangeExpr3);
-
   return CountExpr;
 }(RangeExpr);
 
@@ -14263,6 +14263,8 @@ exports.CountExpr = CountExpr;
 var SumExpr =
 /*#__PURE__*/
 function (_RangeExpr4) {
+  _inherits(SumExpr, _RangeExpr4);
+
   function SumExpr(a, b) {
     _classCallCheck(this, SumExpr);
 
@@ -14290,8 +14292,6 @@ function (_RangeExpr4) {
     }
   }]);
 
-  _inherits(SumExpr, _RangeExpr4);
-
   return SumExpr;
 }(RangeExpr);
 
@@ -14300,6 +14300,8 @@ exports.SumExpr = SumExpr;
 var StdExpr =
 /*#__PURE__*/
 function (_RangeExpr5) {
+  _inherits(StdExpr, _RangeExpr5);
+
   function StdExpr(a, b) {
     _classCallCheck(this, StdExpr);
 
@@ -14363,8 +14365,6 @@ function (_RangeExpr5) {
     }
   }]);
 
-  _inherits(StdExpr, _RangeExpr5);
-
   return StdExpr;
 }(RangeExpr);
 
@@ -14373,6 +14373,8 @@ exports.StdExpr = StdExpr;
 var MaExpr =
 /*#__PURE__*/
 function (_RangeExpr6) {
+  _inherits(MaExpr, _RangeExpr6);
+
   function MaExpr(a, b) {
     _classCallCheck(this, MaExpr);
 
@@ -14403,8 +14405,6 @@ function (_RangeExpr6) {
     }
   }]);
 
-  _inherits(MaExpr, _RangeExpr6);
-
   return MaExpr;
 }(RangeExpr);
 
@@ -14413,6 +14413,8 @@ exports.MaExpr = MaExpr;
 var EmaExpr =
 /*#__PURE__*/
 function (_RangeExpr7) {
+  _inherits(EmaExpr, _RangeExpr7);
+
   function EmaExpr(a, b) {
     _classCallCheck(this, EmaExpr);
 
@@ -14444,8 +14446,6 @@ function (_RangeExpr7) {
     }
   }]);
 
-  _inherits(EmaExpr, _RangeExpr7);
-
   return EmaExpr;
 }(RangeExpr);
 
@@ -14454,6 +14454,8 @@ exports.EmaExpr = EmaExpr;
 var ExpmemaExpr =
 /*#__PURE__*/
 function (_EmaExpr) {
+  _inherits(ExpmemaExpr, _EmaExpr);
+
   function ExpmemaExpr(a, b) {
     _classCallCheck(this, ExpmemaExpr);
 
@@ -14483,8 +14485,6 @@ function (_EmaExpr) {
     }
   }]);
 
-  _inherits(ExpmemaExpr, _EmaExpr);
-
   return ExpmemaExpr;
 }(EmaExpr);
 
@@ -14493,6 +14493,8 @@ exports.ExpmemaExpr = ExpmemaExpr;
 var SmaExpr =
 /*#__PURE__*/
 function (_RangeExpr8) {
+  _inherits(SmaExpr, _RangeExpr8);
+
   function SmaExpr(a, b, c) {
     var _this10;
 
@@ -14530,8 +14532,6 @@ function (_RangeExpr8) {
     }
   }]);
 
-  _inherits(SmaExpr, _RangeExpr8);
-
   return SmaExpr;
 }(RangeExpr);
 
@@ -14540,6 +14540,8 @@ exports.SmaExpr = SmaExpr;
 var SarExpr =
 /*#__PURE__*/
 function (_OpABCDExpr) {
+  _inherits(SarExpr, _OpABCDExpr);
+
   function SarExpr(a, b, c, d) {
     var _this11;
 
@@ -14662,8 +14664,6 @@ function (_OpABCDExpr) {
     }
   }]);
 
-  _inherits(SarExpr, _OpABCDExpr);
-
   return SarExpr;
 }(OpABCDExpr);
 
@@ -14765,10 +14765,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -14777,11 +14773,17 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var Range =
 /*#__PURE__*/
 function (_NamedObject) {
+  _inherits(Range, _NamedObject);
+
   function Range(name) {
     var _this;
 
@@ -14925,10 +14927,11 @@ function (_NamedObject) {
   }, {
     key: "toHeight",
     value: function toHeight(value) {
-		if (value == Infinity || this._ratio == 0) {
-		  return 1.5;
-		}
-	  	return Math.floor(value * this._ratio + 1.5);
+      if (value == Infinity || this._ratio == 0) {
+        return 1.5;
+      }
+
+      return Math.floor(value * this._ratio + 1.5);
     }
   }, {
     key: "update",
@@ -15066,8 +15069,6 @@ function (_NamedObject) {
     }
   }]);
 
-  _inherits(Range, _NamedObject);
-
   return Range;
 }(_named_object.NamedObject);
 
@@ -15076,6 +15077,8 @@ exports.Range = Range;
 var PositiveRange =
 /*#__PURE__*/
 function (_Range) {
+  _inherits(PositiveRange, _Range);
+
   function PositiveRange(name) {
     _classCallCheck(this, PositiveRange);
 
@@ -15090,8 +15093,6 @@ function (_Range) {
     }
   }]);
 
-  _inherits(PositiveRange, _Range);
-
   return PositiveRange;
 }(Range);
 
@@ -15100,6 +15101,8 @@ exports.PositiveRange = PositiveRange;
 var ZeroBasedPositiveRange =
 /*#__PURE__*/
 function (_Range2) {
+  _inherits(ZeroBasedPositiveRange, _Range2);
+
   function ZeroBasedPositiveRange(name) {
     _classCallCheck(this, ZeroBasedPositiveRange);
 
@@ -15114,8 +15117,6 @@ function (_Range2) {
     }
   }]);
 
-  _inherits(ZeroBasedPositiveRange, _Range2);
-
   return ZeroBasedPositiveRange;
 }(Range);
 
@@ -15124,6 +15125,8 @@ exports.ZeroBasedPositiveRange = ZeroBasedPositiveRange;
 var MainRange =
 /*#__PURE__*/
 function (_Range3) {
+  _inherits(MainRange, _Range3);
+
   function MainRange(name) {
     _classCallCheck(this, MainRange);
 
@@ -15166,8 +15169,6 @@ function (_Range3) {
     }
   }]);
 
-  _inherits(MainRange, _Range3);
-
   return MainRange;
 }(Range);
 
@@ -15176,6 +15177,8 @@ exports.MainRange = MainRange;
 var ZeroCenteredRange =
 /*#__PURE__*/
 function (_Range4) {
+  _inherits(ZeroCenteredRange, _Range4);
+
   function ZeroCenteredRange(name) {
     _classCallCheck(this, ZeroCenteredRange);
 
@@ -15232,8 +15235,6 @@ function (_Range4) {
     }
   }]);
 
-  _inherits(ZeroCenteredRange, _Range4);
-
   return ZeroCenteredRange;
 }(Range);
 
@@ -15242,6 +15243,8 @@ exports.ZeroCenteredRange = ZeroCenteredRange;
 var PercentageRange =
 /*#__PURE__*/
 function (_Range5) {
+  _inherits(PercentageRange, _Range5);
+
   function PercentageRange(name) {
     _classCallCheck(this, PercentageRange);
 
@@ -15280,8 +15283,6 @@ function (_Range5) {
       }
     }
   }]);
-
-  _inherits(PercentageRange, _Range5);
 
   return PercentageRange;
 }(Range);
@@ -15823,10 +15824,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -15835,11 +15832,17 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var CToolManager =
 /*#__PURE__*/
 function (_NamedObject) {
+  _inherits(CToolManager, _NamedObject);
+
   function CToolManager(name) {
     var _this;
 
@@ -15995,8 +15998,6 @@ function (_NamedObject) {
     }
   }]);
 
-  _inherits(CToolManager, _NamedObject);
-
   return CToolManager;
 }(_named_object.NamedObject);
 
@@ -16024,10 +16025,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -16036,11 +16033,17 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var Timeline =
 /*#__PURE__*/
 function (_NamedObject) {
+  _inherits(Timeline, _NamedObject);
+
   function Timeline(name) {
     var _this;
 
@@ -16339,8 +16342,6 @@ function (_NamedObject) {
     }
   }]);
 
-  _inherits(Timeline, _NamedObject);
-
   return Timeline;
 }(_named_object.NamedObject);
 
@@ -16376,10 +16377,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -16392,11 +16389,17 @@ function _get(target, property, receiver) { if (typeof Reflect !== "undefined" &
 
 function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var TableLayout =
 /*#__PURE__*/
 function (_areas$ChartAreaGroup) {
+  _inherits(TableLayout, _areas$ChartAreaGroup);
+
   function TableLayout(name) {
     var _this;
 
@@ -16715,8 +16718,6 @@ function (_areas$ChartAreaGroup) {
     }
   }]);
 
-  _inherits(TableLayout, _areas$ChartAreaGroup);
-
   return TableLayout;
 }(areas.ChartAreaGroup);
 
@@ -16725,6 +16726,8 @@ exports.TableLayout = TableLayout;
 var DockableLayout =
 /*#__PURE__*/
 function (_areas$ChartAreaGroup2) {
+  _inherits(DockableLayout, _areas$ChartAreaGroup2);
+
   function DockableLayout(name) {
     _classCallCheck(this, DockableLayout);
 
@@ -16853,8 +16856,6 @@ function (_areas$ChartAreaGroup2) {
     }
   }]);
 
-  _inherits(DockableLayout, _areas$ChartAreaGroup2);
-
   return DockableLayout;
 }(areas.ChartAreaGroup);
 
@@ -16880,15 +16881,15 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -17046,6 +17047,8 @@ exports.Indicator = Indicator;
 var HLCIndicator =
 /*#__PURE__*/
 function (_Indicator) {
+  _inherits(HLCIndicator, _Indicator);
+
   function HLCIndicator() {
     var _this;
 
@@ -17074,8 +17077,6 @@ function (_Indicator) {
     }
   }]);
 
-  _inherits(HLCIndicator, _Indicator);
-
   return HLCIndicator;
 }(Indicator);
 
@@ -17084,6 +17085,8 @@ exports.HLCIndicator = HLCIndicator;
 var MAIndicator =
 /*#__PURE__*/
 function (_Indicator2) {
+  _inherits(MAIndicator, _Indicator2);
+
   function MAIndicator() {
     var _this2;
 
@@ -17131,8 +17134,6 @@ function (_Indicator2) {
     }
   }]);
 
-  _inherits(MAIndicator, _Indicator2);
-
   return MAIndicator;
 }(Indicator);
 
@@ -17141,6 +17142,8 @@ exports.MAIndicator = MAIndicator;
 var EMAIndicator =
 /*#__PURE__*/
 function (_Indicator3) {
+  _inherits(EMAIndicator, _Indicator3);
+
   function EMAIndicator() {
     var _this3;
 
@@ -17188,8 +17191,6 @@ function (_Indicator3) {
     }
   }]);
 
-  _inherits(EMAIndicator, _Indicator3);
-
   return EMAIndicator;
 }(Indicator);
 
@@ -17198,6 +17199,8 @@ exports.EMAIndicator = EMAIndicator;
 var VOLUMEIndicator =
 /*#__PURE__*/
 function (_Indicator4) {
+  _inherits(VOLUMEIndicator, _Indicator4);
+
   function VOLUMEIndicator() {
     var _this4;
 
@@ -17229,8 +17232,6 @@ function (_Indicator4) {
     }
   }]);
 
-  _inherits(VOLUMEIndicator, _Indicator4);
-
   return VOLUMEIndicator;
 }(Indicator);
 
@@ -17239,6 +17240,8 @@ exports.VOLUMEIndicator = VOLUMEIndicator;
 var MACDIndicator =
 /*#__PURE__*/
 function (_Indicator5) {
+  _inherits(MACDIndicator, _Indicator5);
+
   function MACDIndicator() {
     var _this5;
 
@@ -17277,8 +17280,6 @@ function (_Indicator5) {
     }
   }]);
 
-  _inherits(MACDIndicator, _Indicator5);
-
   return MACDIndicator;
 }(Indicator);
 
@@ -17287,6 +17288,8 @@ exports.MACDIndicator = MACDIndicator;
 var DMIIndicator =
 /*#__PURE__*/
 function (_Indicator6) {
+  _inherits(DMIIndicator, _Indicator6);
+
   function DMIIndicator() {
     var _this6;
 
@@ -17346,8 +17349,6 @@ function (_Indicator6) {
     }
   }]);
 
-  _inherits(DMIIndicator, _Indicator6);
-
   return DMIIndicator;
 }(Indicator);
 
@@ -17356,6 +17357,8 @@ exports.DMIIndicator = DMIIndicator;
 var DMAIndicator =
 /*#__PURE__*/
 function (_Indicator7) {
+  _inherits(DMAIndicator, _Indicator7);
+
   function DMAIndicator() {
     var _this7;
 
@@ -17390,8 +17393,6 @@ function (_Indicator7) {
     }
   }]);
 
-  _inherits(DMAIndicator, _Indicator7);
-
   return DMAIndicator;
 }(Indicator);
 
@@ -17400,6 +17401,8 @@ exports.DMAIndicator = DMAIndicator;
 var TRIXIndicator =
 /*#__PURE__*/
 function (_Indicator8) {
+  _inherits(TRIXIndicator, _Indicator8);
+
   function TRIXIndicator() {
     var _this8;
 
@@ -17435,8 +17438,6 @@ function (_Indicator8) {
     }
   }]);
 
-  _inherits(TRIXIndicator, _Indicator8);
-
   return TRIXIndicator;
 }(Indicator);
 
@@ -17445,6 +17446,8 @@ exports.TRIXIndicator = TRIXIndicator;
 var BRARIndicator =
 /*#__PURE__*/
 function (_Indicator9) {
+  _inherits(BRARIndicator, _Indicator9);
+
   function BRARIndicator() {
     var _this9;
 
@@ -17477,8 +17480,6 @@ function (_Indicator9) {
     }
   }]);
 
-  _inherits(BRARIndicator, _Indicator9);
-
   return BRARIndicator;
 }(Indicator);
 
@@ -17487,6 +17488,8 @@ exports.BRARIndicator = BRARIndicator;
 var VRIndicator =
 /*#__PURE__*/
 function (_Indicator10) {
+  _inherits(VRIndicator, _Indicator10);
+
   function VRIndicator() {
     var _this10;
 
@@ -17534,8 +17537,6 @@ function (_Indicator10) {
     }
   }]);
 
-  _inherits(VRIndicator, _Indicator10);
-
   return VRIndicator;
 }(Indicator);
 
@@ -17544,6 +17545,8 @@ exports.VRIndicator = VRIndicator;
 var OBVIndicator =
 /*#__PURE__*/
 function (_Indicator11) {
+  _inherits(OBVIndicator, _Indicator11);
+
   function OBVIndicator() {
     var _this11;
 
@@ -17580,8 +17583,6 @@ function (_Indicator11) {
     }
   }]);
 
-  _inherits(OBVIndicator, _Indicator11);
-
   return OBVIndicator;
 }(Indicator);
 
@@ -17590,6 +17591,8 @@ exports.OBVIndicator = OBVIndicator;
 var EMVIndicator =
 /*#__PURE__*/
 function (_Indicator12) {
+  _inherits(EMVIndicator, _Indicator12);
+
   function EMVIndicator() {
     var _this12;
 
@@ -17629,8 +17632,6 @@ function (_Indicator12) {
     }
   }]);
 
-  _inherits(EMVIndicator, _Indicator12);
-
   return EMVIndicator;
 }(Indicator);
 
@@ -17639,6 +17640,8 @@ exports.EMVIndicator = EMVIndicator;
 var RSIIndicator =
 /*#__PURE__*/
 function (_Indicator13) {
+  _inherits(RSIIndicator, _Indicator13);
+
   function RSIIndicator() {
     var _this13;
 
@@ -17679,8 +17682,6 @@ function (_Indicator13) {
     }
   }]);
 
-  _inherits(RSIIndicator, _Indicator13);
-
   return RSIIndicator;
 }(Indicator);
 
@@ -17689,6 +17690,8 @@ exports.RSIIndicator = RSIIndicator;
 var WRIndicator =
 /*#__PURE__*/
 function (_Indicator14) {
+  _inherits(WRIndicator, _Indicator14);
+
   function WRIndicator() {
     var _this14;
 
@@ -17736,8 +17739,6 @@ function (_Indicator14) {
     }
   }]);
 
-  _inherits(WRIndicator, _Indicator14);
-
   return WRIndicator;
 }(Indicator);
 
@@ -17746,6 +17747,8 @@ exports.WRIndicator = WRIndicator;
 var SARIndicator =
 /*#__PURE__*/
 function (_Indicator15) {
+  _inherits(SARIndicator, _Indicator15);
+
   function SARIndicator() {
     var _this15;
 
@@ -17769,8 +17772,6 @@ function (_Indicator15) {
     }
   }]);
 
-  _inherits(SARIndicator, _Indicator15);
-
   return SARIndicator;
 }(Indicator);
 
@@ -17779,6 +17780,8 @@ exports.SARIndicator = SARIndicator;
 var KDJIndicator =
 /*#__PURE__*/
 function (_Indicator16) {
+  _inherits(KDJIndicator, _Indicator16);
+
   function KDJIndicator() {
     var _this16;
 
@@ -17829,8 +17832,6 @@ function (_Indicator16) {
     }
   }]);
 
-  _inherits(KDJIndicator, _Indicator16);
-
   return KDJIndicator;
 }(Indicator);
 
@@ -17839,6 +17840,8 @@ exports.KDJIndicator = KDJIndicator;
 var ROCIndicator =
 /*#__PURE__*/
 function (_Indicator17) {
+  _inherits(ROCIndicator, _Indicator17);
+
   function ROCIndicator() {
     var _this17;
 
@@ -17874,8 +17877,6 @@ function (_Indicator17) {
     }
   }]);
 
-  _inherits(ROCIndicator, _Indicator17);
-
   return ROCIndicator;
 }(Indicator);
 
@@ -17884,6 +17885,8 @@ exports.ROCIndicator = ROCIndicator;
 var MTMIndicator =
 /*#__PURE__*/
 function (_Indicator18) {
+  _inherits(MTMIndicator, _Indicator18);
+
   function MTMIndicator() {
     var _this18;
 
@@ -17915,8 +17918,6 @@ function (_Indicator18) {
     }
   }]);
 
-  _inherits(MTMIndicator, _Indicator18);
-
   return MTMIndicator;
 }(Indicator);
 
@@ -17925,6 +17926,8 @@ exports.MTMIndicator = MTMIndicator;
 var BOLLIndicator =
 /*#__PURE__*/
 function (_Indicator19) {
+  _inherits(BOLLIndicator, _Indicator19);
+
   function BOLLIndicator() {
     var _this19;
 
@@ -17961,8 +17964,6 @@ function (_Indicator19) {
     }
   }]);
 
-  _inherits(BOLLIndicator, _Indicator19);
-
   return BOLLIndicator;
 }(Indicator);
 
@@ -17971,6 +17972,8 @@ exports.BOLLIndicator = BOLLIndicator;
 var PSYIndicator =
 /*#__PURE__*/
 function (_Indicator20) {
+  _inherits(PSYIndicator, _Indicator20);
+
   function PSYIndicator() {
     var _this20;
 
@@ -18002,8 +18005,6 @@ function (_Indicator20) {
     }
   }]);
 
-  _inherits(PSYIndicator, _Indicator20);
-
   return PSYIndicator;
 }(Indicator);
 
@@ -18012,6 +18013,8 @@ exports.PSYIndicator = PSYIndicator;
 var STOCHRSIIndicator =
 /*#__PURE__*/
 function (_Indicator21) {
+  _inherits(STOCHRSIIndicator, _Indicator21);
+
   function STOCHRSIIndicator() {
     var _this21;
 
@@ -18057,8 +18060,6 @@ function (_Indicator21) {
     return _this21;
   }
 
-  _inherits(STOCHRSIIndicator, _Indicator21);
-
   return STOCHRSIIndicator;
 }(Indicator);
 
@@ -18085,8 +18086,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/_css-loader@0.28.11@css-loader/index.js!./main.css", function() {
-			var newContent = require("!!../../node_modules/_css-loader@0.28.11@css-loader/index.js!./main.css");
+		module.hot.accept("!!../../node_modules/css-loader/index.js!./main.css", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!./main.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
