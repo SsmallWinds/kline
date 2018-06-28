@@ -1792,6 +1792,87 @@ export class RangeSelectionPlotter extends NamedObject {
 
 }
 
+export class PositionLinePlotter extends NamedObject {
+
+    constructor(name) {
+        super(name);
+    }
+
+    Draw(context) {
+        let mgr = ChartManager.instance;
+        if (mgr._drawingTool !== ChartManager.DrawingTool.CrossCursor) {
+            return;
+        }
+        let area = mgr.getArea(this.getAreaName());
+        let timeline = mgr.getTimeline(this.getDataSourceName());
+        //if (timeline.getSelectedIndex() < 0) {
+        //    return;
+        //}
+        let range = mgr.getRange(this.getAreaName());
+        let theme = mgr.getTheme(this.getFrameName());
+        context.strokeStyle = theme.getColor(themes.Theme.Color.Cursor);
+        let x = timeline.toItemCenter(timeline.getSelectedIndex());
+        Plotter.drawLine(context, x, area.getTop() - 1, x, area.getBottom());
+        let pos = 100;
+        //let pos = range.getSelectedPosition();
+        if (pos >= 0) {
+            Plotter.drawLine(context, area.getLeft(), pos, area.getRight(), pos);
+            context.fillText("持仓 = 100 ,价格 = 100",area.getRight() - 150, pos - 10);
+            //context.fillText(100, area.getCenter(), y);
+        }
+    }
+
+}
+
+export class PositionPricePlotter extends NamedObject {
+
+    constructor(name) {
+        super(name);
+    }
+
+    Draw(context) {
+        let mgr = ChartManager.instance;
+        let areaName = this.getAreaName();
+        let area = mgr.getArea(areaName);
+        let timeline = mgr.getTimeline(this.getDataSourceName());
+        //if (timeline.getSelectedIndex() < 0) {
+        //    return;
+        //}
+        let rangeName = areaName.substring(0, areaName.lastIndexOf("Range"));
+        let range = mgr.getRange(rangeName);
+        //if (range.getRange() === 0.0 || range.getSelectedPosition() < 0) {
+        //    return;
+        //}
+        let v = range.getSelectedValue();
+        //if (v === -Number.MAX_VALUE) {
+        //    return;
+        //}
+        let y = 100;
+        //let y = range.getSelectedPosition();
+        Plotter.createPolygon(context, [
+            {"x": area.getLeft(), "y": y},
+            {"x": area.getLeft() + 5, "y": y + 10},
+            {"x": area.getRight() - 3, "y": y + 10},
+            {"x": area.getRight() - 3, "y": y - 10},
+            {"x": area.getLeft() + 5, "y": y - 10}
+        ]);
+        let theme = mgr.getTheme(this.getFrameName());
+        context.fillStyle = theme.getColor(themes.Theme.Color.Background);
+        context.fill();
+        context.strokeStyle = theme.getColor(themes.Theme.Color.Grid4);
+        context.stroke();
+        context.font = theme.getFont(themes.Theme.Font.Default);
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.fillStyle = theme.getColor(themes.Theme.Color.Text3);
+        let digits = 2;
+        if (range.getNameObject().getCompAt(2) === "main") {
+            digits = mgr.getDataSource(this.getDataSourceName()).getDecimalDigits();
+        }
+        context.fillText(100, area.getCenter(), y);
+    }
+
+}
 
 export class CToolPlotter extends NamedObject {
 

@@ -64,6 +64,8 @@ export class Template {
         mgr.setPlotter(plotter.getName(), plotter);
         plotter = new plotters.SelectionPlotter(areaName + ".selection");
         mgr.setPlotter(plotter.getName(), plotter);
+        plotter = new plotters.PositionLinePlotter(areaName + ".position");
+        mgr.setPlotter(plotter.getName(), plotter);
         plotter = new plotters.CDynamicLinePlotter(areaName + ".tool");
         mgr.setPlotter(plotter.getName(), plotter);
         plotter = new plotters.RangeAreaBackgroundPlotter(areaName + "Range.background");
@@ -73,6 +75,8 @@ export class Template {
         plotter = new plotters.RangePlotter(areaName + "Range.main");
         mgr.setPlotter(plotter.getName(), plotter);
         plotter = new plotters.RangeSelectionPlotter(areaName + "Range.selection");
+        mgr.setPlotter(plotter.getName(), plotter);
+        plotter = new plotters.PositionPricePlotter(areaName + "Range.position");
         mgr.setPlotter(plotter.getName(), plotter);
         plotter = new plotters.LastClosePlotter(areaName + "Range.decoration");
         mgr.setPlotter(plotter.getName(), plotter);
