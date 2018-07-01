@@ -3847,8 +3847,8 @@ function () {
         return;
       }
 
-      if (_kline.default.instance.stompClient && _kline.default.instance.stompClient.ws.readyState === 1) {
-        _kline.default.instance.stompClient.send(_kline.default.instance.sendPath, {}, JSON.stringify(Control.parseRequestParam(_kline.default.instance.requestParam)));
+      if (_kline.default.instance.stompClient && _kline.default.instance.stompClient.readyState === 1) {
+        _kline.default.instance.stompClient.send(JSON.stringify(Control.parseRequestParam(_kline.default.instance.requestParam)));
 
         return;
       }
@@ -4443,10 +4443,10 @@ function () {
   }, {
     key: "switchSymbol",
     value: function switchSymbol(symbol) {
-      if (_kline.default.instance.type === "stomp" && _kline.default.instance.stompClient.ws.readyState === 1) {
+      if (_kline.default.instance.type === "stomp" && _kline.default.instance.stompClient.readyState === 1) {
         _kline.default.instance.subscribed.unsubscribe();
 
-        _kline.default.instance.subscribed = _kline.default.instance.stompClient.subscribe(_kline.default.instance.subscribePath + '/' + symbol + '/' + _kline.default.instance.range, Control.subscribeCallback);
+        _kline.default.instance.subscribed = _kline.default.instance.stompClient.send(_kline.default.instance.subscribePath + '/' + symbol + '/' + _kline.default.instance.range);
       }
 
       Control.switchSymbolSelected(symbol);
@@ -4486,44 +4486,47 @@ function () {
   }, {
     key: "subscribeCallback",
     value: function subscribeCallback(res) {
-      Control.requestSuccessHandler(JSON.parse(res.body));
+      Control.requestSuccessHandler(JSON.parse(res.data));
     }
   }, {
     key: "socketConnect",
     value: function socketConnect() {
       if (!_kline.default.instance.stompClient || !_kline.default.instance.socketConnected) {
-        if (_kline.default.instance.enableSockjs) {
-          var socket = new SockJS(_kline.default.instance.url);
-          _kline.default.instance.stompClient = Stomp.over(socket);
-        } else {
-          _kline.default.instance.stompClient = Stomp.client(_kline.default.instance.url);
-        }
-
+        _kline.default.instance.stompClient = new WebSocket(_kline.default.instance.url);
         _kline.default.instance.socketConnected = true;
       }
 
-      if (_kline.default.instance.stompClient.ws.readyState === 1) {
+      if (_kline.default.instance.stompClient.readyState === 1) {
         console.log('DEBUG: already connected');
         return;
       }
 
-      if (!_kline.default.instance.debug) {
-        _kline.default.instance.stompClient.debug = null;
+      if (!_kline.default.instance.debug) {//Kline.instance.stompClient.debug = null;
       }
 
-      _kline.default.instance.stompClient.connect({}, function () {
-        _kline.default.instance.stompClient.subscribe('/user' + _kline.default.instance.subscribePath, Control.subscribeCallback);
-
-        _kline.default.instance.subscribed = _kline.default.instance.stompClient.subscribe(_kline.default.instance.subscribePath + '/' + _kline.default.instance.symbol + '/' + _kline.default.instance.range, Control.subscribeCallback);
+      _kline.default.instance.stompClient.onopen = function () {
+        console.log("DEBUG: stompClient onopen");
         Control.requestData(true);
-      }, function () {
-        _kline.default.instance.stompClient.disconnect();
+      };
 
-        console.log("DEBUG: reconnect in 5 seconds ...");
-        setTimeout(function () {
-          Control.socketConnect();
-        }, 5000);
+      _kline.default.instance.stompClient.onclose = function () {
+        console.log("DEBUG: stompClient onclose");
+      };
+
+      _kline.default.instance.stompClient.onmessage = Control.subscribeCallback;
+      /*
+      Kline.instance.stompClient.connect({}, function () {
+          Kline.instance.stompClient.subscribe('/user' + Kline.instance.subscribePath, Control.subscribeCallback);
+          Kline.instance.subscribed = Kline.instance.stompClient.subscribe(Kline.instance.subscribePath + '/' + Kline.instance.symbol + '/' + Kline.instance.range, Control.subscribeCallback);
+          Control.requestData(true);
+      }, function () {
+          Kline.instance.stompClient.disconnect();
+          console.log("DEBUG: reconnect in 5 seconds ...");
+          setTimeout(function () {
+              Control.socketConnect();
+          }, 5000);
       });
+      */
     }
   }]);
 
@@ -15736,10 +15739,10 @@ function () {
     value: function setCurrentPeriod(period) {
       this._range = _kline.default.instance.periodMap[period];
 
-      if (_kline.default.instance.type === "stomp" && _kline.default.instance.stompClient.ws.readyState === 1) {
+      if (_kline.default.instance.type === "stomp" && _kline.default.instance.stompClient.readyState === 1) {
         _kline.default.instance.subscribed.unsubscribe();
 
-        _kline.default.instance.subscribed = _kline.default.instance.stompClient.subscribe(_kline.default.instance.subscribePath + '/' + _kline.default.instance.symbol + '/' + this._range, _control.Control.subscribeCallback);
+        _kline.default.instance.subscribed = _kline.default.instance.stompClient.send(_kline.default.instance.subscribePath + '/' + _kline.default.instance.symbol + '/' + this._range);
       }
 
       this.updateDataAndDisplay();

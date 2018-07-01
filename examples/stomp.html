@@ -58,10 +58,10 @@
         symbol: "BTC/USD",
         symbolName: "BTC/USD",
         type: "stomp", // poll/stomp
-        url: 'https://127.0.0.1/v1/socket',
+        url: 'ws://127.0.0.1:12345/test',
         limit: 1000,
         intervalTime: 5000,
-        subscribePath: "/trade/kline",
+        subscribePath: "/test",
         sendPath: "/trade/kline",
         debug: true,
         showTrade: true,

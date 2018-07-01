@@ -81,8 +81,8 @@ export class Control {
             }
             return;
         }
-        if (Kline.instance.stompClient && Kline.instance.stompClient.ws.readyState === 1) {
-            Kline.instance.stompClient.send(Kline.instance.sendPath, {}, JSON.stringify(Control.parseRequestParam(Kline.instance.requestParam)));
+        if (Kline.instance.stompClient && Kline.instance.stompClient.readyState === 1) {
+            Kline.instance.stompClient.send(JSON.stringify(Control.parseRequestParam(Kline.instance.requestParam)));
             return;
         }
         if (Kline.instance.debug) {
@@ -584,9 +584,9 @@ export class Control {
 
 
     static switchSymbol(symbol) {
-        if (Kline.instance.type === "stomp" && Kline.instance.stompClient.ws.readyState === 1) {
+        if (Kline.instance.type === "stomp" && Kline.instance.stompClient.readyState === 1) {
             Kline.instance.subscribed.unsubscribe();
-            Kline.instance.subscribed = Kline.instance.stompClient.subscribe(Kline.instance.subscribePath + '/' + symbol + '/' + Kline.instance.range, Control.subscribeCallback);
+            Kline.instance.subscribed = Kline.instance.stompClient.send(Kline.instance.subscribePath + '/' + symbol + '/' + Kline.instance.range);
         }
         Control.switchSymbolSelected(symbol);
         let settings = ChartSettings.get();
@@ -615,29 +615,35 @@ export class Control {
     }
 
     static subscribeCallback(res) {
-        Control.requestSuccessHandler(JSON.parse(res.body));
+        Control.requestSuccessHandler(JSON.parse(res.data));
     }
 
     static socketConnect() {
 
         if (!Kline.instance.stompClient || !Kline.instance.socketConnected) {
-            if (Kline.instance.enableSockjs) {
-                let socket = new SockJS(Kline.instance.url);
-                Kline.instance.stompClient = Stomp.over(socket);
-            } else {
-                Kline.instance.stompClient = Stomp.client(Kline.instance.url);
-            }
+            Kline.instance.stompClient = new WebSocket(Kline.instance.url);
             Kline.instance.socketConnected = true;
         }
 
-        if (Kline.instance.stompClient.ws.readyState === 1) {
+        if (Kline.instance.stompClient.readyState === 1) {
             console.log('DEBUG: already connected');
             return;
         }
 
         if (!Kline.instance.debug) {
-            Kline.instance.stompClient.debug = null;
+            //Kline.instance.stompClient.debug = null;
         }
+        
+        Kline.instance.stompClient.onopen = function () {
+            console.log("DEBUG: stompClient onopen");
+            Control.requestData(true);
+        };
+        Kline.instance.stompClient.onclose = function () {
+            console.log("DEBUG: stompClient onclose");
+        };
+        Kline.instance.stompClient.onmessage = Control.subscribeCallback;
+
+        /*
         Kline.instance.stompClient.connect({}, function () {
             Kline.instance.stompClient.subscribe('/user' + Kline.instance.subscribePath, Control.subscribeCallback);
             Kline.instance.subscribed = Kline.instance.stompClient.subscribe(Kline.instance.subscribePath + '/' + Kline.instance.symbol + '/' + Kline.instance.range, Control.subscribeCallback);
@@ -649,6 +655,7 @@ export class Control {
                 Control.socketConnect();
             }, 5000);
         });
+        */
     }
 
 }
