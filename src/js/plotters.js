@@ -1792,38 +1792,6 @@ export class RangeSelectionPlotter extends NamedObject {
 
 }
 
-export class PositionLinePlotter extends NamedObject {
-
-    constructor(name) {
-        super(name);
-    }
-
-    Draw(context) {
-        let mgr = ChartManager.instance;
-        if (mgr._drawingTool !== ChartManager.DrawingTool.CrossCursor) {
-            return;
-        }
-        let area = mgr.getArea(this.getAreaName());
-        let timeline = mgr.getTimeline(this.getDataSourceName());
-        //if (timeline.getSelectedIndex() < 0) {
-        //    return;
-        //}
-        let range = mgr.getRange(this.getAreaName());
-        let theme = mgr.getTheme(this.getFrameName());
-        context.strokeStyle = theme.getColor(themes.Theme.Color.Cursor);
-        let x = timeline.toItemCenter(timeline.getSelectedIndex());
-        Plotter.drawLine(context, x, area.getTop() - 1, x, area.getBottom());
-        let pos = 100;
-        //let pos = range.getSelectedPosition();
-        if (pos >= 0) {
-            Plotter.drawLine(context, area.getLeft(), pos, area.getRight(), pos);
-            context.fillText("持仓 = 100 ,价格 = 100",area.getRight() - 150, pos - 10);
-            //context.fillText(100, area.getCenter(), y);
-        }
-    }
-
-}
-
 export class PositionPricePlotter extends NamedObject {
 
     constructor(name) {
@@ -1834,6 +1802,7 @@ export class PositionPricePlotter extends NamedObject {
         let mgr = ChartManager.instance;
         let areaName = this.getAreaName();
         let area = mgr.getArea(areaName);
+        let mainArea = mgr.getArea(areaName.substring(0, areaName.lastIndexOf("Range")));
         let timeline = mgr.getTimeline(this.getDataSourceName());
         //if (timeline.getSelectedIndex() < 0) {
         //    return;
@@ -1869,7 +1838,9 @@ export class PositionPricePlotter extends NamedObject {
         if (range.getNameObject().getCompAt(2) === "main") {
             digits = mgr.getDataSource(this.getDataSourceName()).getDecimalDigits();
         }
-        context.fillText(100, area.getCenter(), y);
+        context.fillText(y.toString(), area.getCenter(), y);
+        Plotter.drawLine(context, mainArea.getLeft(), y, mainArea.getRight(), y);
+        context.fillText("持仓 = 100 ,价格 = 100",mainArea.getRight() - 100, y - 10);
     }
 
 }

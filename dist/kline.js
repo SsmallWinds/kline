@@ -3508,8 +3508,6 @@ function () {
       mgr.setPlotter(plotter.getName(), plotter);
       plotter = new plotters.SelectionPlotter(areaName + ".selection");
       mgr.setPlotter(plotter.getName(), plotter);
-      plotter = new plotters.PositionLinePlotter(areaName + ".position");
-      mgr.setPlotter(plotter.getName(), plotter);
       plotter = new plotters.CDynamicLinePlotter(areaName + ".tool");
       mgr.setPlotter(plotter.getName(), plotter);
       plotter = new plotters.RangeAreaBackgroundPlotter(areaName + "Range.background");
@@ -6078,7 +6076,7 @@ exports.CArrowLineObject = CArrowLineObject;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CDynamicLinePlotter = exports.DrawFibFansPlotter = exports.DrawBandLinesPlotter = exports.DrawFibRetracePlotter = exports.BandLinesPlotter = exports.DrawTriParallelLinesPlotter = exports.DrawBiParallelRayLinesPlotter = exports.DrawBiParallelLinesPlotter = exports.ParallelLinesPlotter = exports.DrawPriceLinesPlotter = exports.DrawVertiStraightLinesPlotter = exports.DrawHoriSegLinesPlotter = exports.DrawHoriRayLinesPlotter = exports.DrawHoriStraightLinesPlotter = exports.DrawArrowLinesPlotter = exports.DrawRayLinesPlotter = exports.DrawSegLinesPlotter = exports.DrawStraightLinesPlotter = exports.CToolPlotter = exports.PositionPricePlotter = exports.PositionLinePlotter = exports.RangeSelectionPlotter = exports.TimelineSelectionPlotter = exports.SelectionPlotter = exports.LastClosePlotter = exports.LastVolumePlotter = exports.COrderGraphPlotter = exports.RangePlotter = exports.TimelinePlotter = exports.MinMaxPlotter = exports.IndicatorInfoPlotter = exports.IndicatorPlotter = exports.MainInfoPlotter = exports.OHLCPlotter = exports.CandlestickHLCPlotter = exports.CandlestickPlotter = exports.CGridPlotter = exports.TimelineAreaBackgroundPlotter = exports.RangeAreaBackgroundPlotter = exports.MainAreaBackgroundPlotter = exports.BackgroundPlotter = exports.Plotter = void 0;
+exports.CDynamicLinePlotter = exports.DrawFibFansPlotter = exports.DrawBandLinesPlotter = exports.DrawFibRetracePlotter = exports.BandLinesPlotter = exports.DrawTriParallelLinesPlotter = exports.DrawBiParallelRayLinesPlotter = exports.DrawBiParallelLinesPlotter = exports.ParallelLinesPlotter = exports.DrawPriceLinesPlotter = exports.DrawVertiStraightLinesPlotter = exports.DrawHoriSegLinesPlotter = exports.DrawHoriRayLinesPlotter = exports.DrawHoriStraightLinesPlotter = exports.DrawArrowLinesPlotter = exports.DrawRayLinesPlotter = exports.DrawSegLinesPlotter = exports.DrawStraightLinesPlotter = exports.CToolPlotter = exports.PositionPricePlotter = exports.RangeSelectionPlotter = exports.TimelineSelectionPlotter = exports.SelectionPlotter = exports.LastClosePlotter = exports.LastVolumePlotter = exports.COrderGraphPlotter = exports.RangePlotter = exports.TimelinePlotter = exports.MinMaxPlotter = exports.IndicatorInfoPlotter = exports.IndicatorPlotter = exports.MainInfoPlotter = exports.OHLCPlotter = exports.CandlestickHLCPlotter = exports.CandlestickPlotter = exports.CGridPlotter = exports.TimelineAreaBackgroundPlotter = exports.RangeAreaBackgroundPlotter = exports.MainAreaBackgroundPlotter = exports.BackgroundPlotter = exports.Plotter = void 0;
 
 var _kline = _interopRequireDefault(__webpack_require__(3));
 
@@ -8442,54 +8440,10 @@ function (_NamedObject8) {
 
 exports.RangeSelectionPlotter = RangeSelectionPlotter;
 
-var PositionLinePlotter =
-/*#__PURE__*/
-function (_NamedObject9) {
-  _inherits(PositionLinePlotter, _NamedObject9);
-
-  function PositionLinePlotter(name) {
-    _classCallCheck(this, PositionLinePlotter);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(PositionLinePlotter).call(this, name));
-  }
-
-  _createClass(PositionLinePlotter, [{
-    key: "Draw",
-    value: function Draw(context) {
-      var mgr = _chart_manager.ChartManager.instance;
-
-      if (mgr._drawingTool !== _chart_manager.ChartManager.DrawingTool.CrossCursor) {
-        return;
-      }
-
-      var area = mgr.getArea(this.getAreaName());
-      var timeline = mgr.getTimeline(this.getDataSourceName()); //if (timeline.getSelectedIndex() < 0) {
-      //    return;
-      //}
-
-      var range = mgr.getRange(this.getAreaName());
-      var theme = mgr.getTheme(this.getFrameName());
-      context.strokeStyle = theme.getColor(themes.Theme.Color.Cursor);
-      var x = timeline.toItemCenter(timeline.getSelectedIndex());
-      Plotter.drawLine(context, x, area.getTop() - 1, x, area.getBottom());
-      var pos = 100; //let pos = range.getSelectedPosition();
-
-      if (pos >= 0) {
-        Plotter.drawLine(context, area.getLeft(), pos, area.getRight(), pos);
-        context.fillText("持仓 = 100 ,价格 = 100", area.getRight() - 150, pos - 10); //context.fillText(100, area.getCenter(), y);
-      }
-    }
-  }]);
-
-  return PositionLinePlotter;
-}(_named_object.NamedObject);
-
-exports.PositionLinePlotter = PositionLinePlotter;
-
 var PositionPricePlotter =
 /*#__PURE__*/
-function (_NamedObject10) {
-  _inherits(PositionPricePlotter, _NamedObject10);
+function (_NamedObject9) {
+  _inherits(PositionPricePlotter, _NamedObject9);
 
   function PositionPricePlotter(name) {
     _classCallCheck(this, PositionPricePlotter);
@@ -8503,6 +8457,7 @@ function (_NamedObject10) {
       var mgr = _chart_manager.ChartManager.instance;
       var areaName = this.getAreaName();
       var area = mgr.getArea(areaName);
+      var mainArea = mgr.getArea(areaName.substring(0, areaName.lastIndexOf("Range")));
       var timeline = mgr.getTimeline(this.getDataSourceName()); //if (timeline.getSelectedIndex() < 0) {
       //    return;
       //}
@@ -8549,7 +8504,9 @@ function (_NamedObject10) {
         digits = mgr.getDataSource(this.getDataSourceName()).getDecimalDigits();
       }
 
-      context.fillText(100, area.getCenter(), y);
+      context.fillText(y.toString(), area.getCenter(), y);
+      Plotter.drawLine(context, mainArea.getLeft(), y, mainArea.getRight(), y);
+      context.fillText("持仓 = 100 ,价格 = 100", mainArea.getRight() - 100, y - 10);
     }
   }]);
 
@@ -8560,8 +8517,8 @@ exports.PositionPricePlotter = PositionPricePlotter;
 
 var CToolPlotter =
 /*#__PURE__*/
-function (_NamedObject11) {
-  _inherits(CToolPlotter, _NamedObject11);
+function (_NamedObject10) {
+  _inherits(CToolPlotter, _NamedObject10);
 
   function CToolPlotter(name, toolObject) {
     var _this2;
@@ -9509,8 +9466,8 @@ exports.DrawFibFansPlotter = DrawFibFansPlotter;
 
 var CDynamicLinePlotter =
 /*#__PURE__*/
-function (_NamedObject12) {
-  _inherits(CDynamicLinePlotter, _NamedObject12);
+function (_NamedObject11) {
+  _inherits(CDynamicLinePlotter, _NamedObject11);
 
   function CDynamicLinePlotter(name) {
     var _this20;

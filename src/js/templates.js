@@ -64,8 +64,6 @@ export class Template {
         mgr.setPlotter(plotter.getName(), plotter);
         plotter = new plotters.SelectionPlotter(areaName + ".selection");
         mgr.setPlotter(plotter.getName(), plotter);
-        plotter = new plotters.PositionLinePlotter(areaName + ".position");
-        mgr.setPlotter(plotter.getName(), plotter);
         plotter = new plotters.CDynamicLinePlotter(areaName + ".tool");
         mgr.setPlotter(plotter.getName(), plotter);
         plotter = new plotters.RangeAreaBackgroundPlotter(areaName + "Range.background");
