@@ -19,6 +19,10 @@ export class NamedObject {
         return this._nameObj.getName(2);
     }
 
+    getCustomName(){
+        return this._nameObj.getName(3);
+    }
+
     getName() {
         return this._nameObj.getName(-1);
     }

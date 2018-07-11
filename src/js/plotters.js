@@ -1816,8 +1816,17 @@ export class PositionPricePlotter extends NamedObject {
         //if (v === -Number.MAX_VALUE) {
         //    return;
         //}
-        let y = 100;
+        let isLong = this.getCustomName().indexOf("long") >=0;
+        let position =  isLong ? 100 : 99.5;
+        let pnl = -1000;
+        let count = 1;
+        let lineColor = isLong ? "#f00" : "#0f0";
+        let pnlColor = pnl >= 0 ? "#f00" : "#0f0";
+        let y = range.toY(position);
+        //console.log(this.getName());
+        //let y = 100;
         //let y = range.getSelectedPosition();
+
         Plotter.createPolygon(context, [
             {"x": area.getLeft(), "y": y},
             {"x": area.getLeft() + 5, "y": y + 10},
@@ -1825,6 +1834,7 @@ export class PositionPricePlotter extends NamedObject {
             {"x": area.getRight() - 3, "y": y - 10},
             {"x": area.getLeft() + 5, "y": y - 10}
         ]);
+
         let theme = mgr.getTheme(this.getFrameName());
         context.fillStyle = theme.getColor(themes.Theme.Color.Background);
         context.fill();
@@ -1838,9 +1848,19 @@ export class PositionPricePlotter extends NamedObject {
         if (range.getNameObject().getCompAt(2) === "main") {
             digits = mgr.getDataSource(this.getDataSourceName()).getDecimalDigits();
         }
-        context.fillText(y.toString(), area.getCenter(), y);
-        Plotter.drawLine(context, mainArea.getLeft(), y, mainArea.getRight(), y);
-        context.fillText("持仓 = 100 ,价格 = 100",mainArea.getRight() - 100, y - 10);
+        context.fillText(position.toString(), area.getCenter(), y);
+
+        context.strokeStyle = lineColor;
+
+        Plotter.drawLine(context, mainArea.getLeft(),y, mainArea.getRight(), y);
+        context.fill();
+
+
+        context.fillStyle = pnlColor;
+
+        let display = "" + position.toString() + (isLong ? "买":"卖") + count.toString() + "手" + (pnl>=0 ? "盈": "亏") + pnl.toString();
+        //console.log(display);
+        context.fillText(display ,mainArea.getRight() - 100, y - 10);
     }
 
 }

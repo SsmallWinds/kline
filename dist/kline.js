@@ -674,7 +674,7 @@ function () {
       var ds = this._dataSources[area.getDataSourceName()];
 
       var plotterNames;
-      if (ds.getDataCount() < 1) plotterNames = [".selection"];else plotterNames = [".decoration", ".selection", ".position", ".info", ".tool"];
+      if (ds.getDataCount() < 1) plotterNames = [".selection"];else plotterNames = [".decoration", ".selection", ".info", ".tool", ".shortPosition", ".longPosition"];
       this.drawArea(context, area, plotterNames);
     }
   }, {
@@ -1514,6 +1514,11 @@ function () {
     key: "getAreaName",
     value: function getAreaName() {
       return this._nameObj.getName(2);
+    }
+  }, {
+    key: "getCustomName",
+    value: function getCustomName() {
+      return this._nameObj.getName(3);
     }
   }, {
     key: "getName",
@@ -2901,18 +2906,18 @@ function (_Theme) {
     _this._colors[Theme.Color.Indicator3] = "#6bf";
     _this._colors[Theme.Color.Indicator4] = "#a5cf81";
     _this._colors[Theme.Color.Indicator5] = "#e18b89";
-    _this._colors[Theme.Color.Grid0] = "#333";
-    _this._colors[Theme.Color.Grid1] = "#444";
-    _this._colors[Theme.Color.Grid2] = "#666";
+    _this._colors[Theme.Color.Grid0] = "#f00";
+    _this._colors[Theme.Color.Grid1] = "#f00";
+    _this._colors[Theme.Color.Grid2] = "#f00";
     _this._colors[Theme.Color.Grid3] = "#888";
     _this._colors[Theme.Color.Grid4] = "#aaa";
     _this._colors[Theme.Color.TextPositive] = "#1bd357";
     _this._colors[Theme.Color.TextNegative] = "#ff6f5e";
     _this._colors[Theme.Color.Text0] = "#444";
     _this._colors[Theme.Color.Text1] = "#666";
-    _this._colors[Theme.Color.Text2] = "#888";
-    _this._colors[Theme.Color.Text3] = "#aaa";
-    _this._colors[Theme.Color.Text4] = "#ccc";
+    _this._colors[Theme.Color.Text2] = "#fd9f25";
+    _this._colors[Theme.Color.Text3] = "#fd9f25";
+    _this._colors[Theme.Color.Text4] = "#fd9f25";
     _this._colors[Theme.Color.LineColorNormal] = "#a6a6a6";
     _this._colors[Theme.Color.LineColorSelected] = "#ffffff";
     _this._colors[Theme.Color.CircleColorFill] = "#000000";
@@ -3518,7 +3523,9 @@ function () {
       mgr.setPlotter(plotter.getName(), plotter);
       plotter = new plotters.RangeSelectionPlotter(areaName + "Range.selection");
       mgr.setPlotter(plotter.getName(), plotter);
-      plotter = new plotters.PositionPricePlotter(areaName + "Range.position");
+      plotter = new plotters.PositionPricePlotter(areaName + "Range.shortPosition");
+      mgr.setPlotter(plotter.getName(), plotter);
+      plotter = new plotters.PositionPricePlotter(areaName + "Range.longPosition");
       mgr.setPlotter(plotter.getName(), plotter);
       plotter = new plotters.LastClosePlotter(areaName + "Range.decoration");
       mgr.setPlotter(plotter.getName(), plotter);
@@ -8471,7 +8478,15 @@ function (_NamedObject9) {
       //    return;
       //}
 
-      var y = 100; //let y = range.getSelectedPosition();
+      var isLong = this.getCustomName().indexOf("long") >= 0;
+      var position = isLong ? 100 : 99.5;
+      var pnl = -1000;
+      var count = 1;
+      var lineColor = isLong ? "#f00" : "#0f0";
+      var pnlColor = pnl >= 0 ? "#f00" : "#0f0";
+      var y = range.toY(position); //console.log(this.getName());
+      //let y = 100;
+      //let y = range.getSelectedPosition();
 
       Plotter.createPolygon(context, [{
         "x": area.getLeft(),
@@ -8504,9 +8519,14 @@ function (_NamedObject9) {
         digits = mgr.getDataSource(this.getDataSourceName()).getDecimalDigits();
       }
 
-      context.fillText(y.toString(), area.getCenter(), y);
+      context.fillText(position.toString(), area.getCenter(), y);
+      context.strokeStyle = lineColor;
       Plotter.drawLine(context, mainArea.getLeft(), y, mainArea.getRight(), y);
-      context.fillText("持仓 = 100 ,价格 = 100", mainArea.getRight() - 100, y - 10);
+      context.fill();
+      context.fillStyle = pnlColor;
+      var display = "" + position.toString() + (isLong ? "买" : "卖") + count.toString() + "手" + (pnl >= 0 ? "盈" : "亏") + pnl.toString(); //console.log(display);
+
+      context.fillText(display, mainArea.getRight() - 100, y - 10);
     }
   }]);
 

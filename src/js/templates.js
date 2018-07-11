@@ -74,7 +74,9 @@ export class Template {
         mgr.setPlotter(plotter.getName(), plotter);
         plotter = new plotters.RangeSelectionPlotter(areaName + "Range.selection");
         mgr.setPlotter(plotter.getName(), plotter);
-        plotter = new plotters.PositionPricePlotter(areaName + "Range.position");
+        plotter = new plotters.PositionPricePlotter(areaName + "Range.shortPosition");
+        mgr.setPlotter(plotter.getName(), plotter);
+        plotter = new plotters.PositionPricePlotter(areaName + "Range.longPosition");
         mgr.setPlotter(plotter.getName(), plotter);
         plotter = new plotters.LastClosePlotter(areaName + "Range.decoration");
         mgr.setPlotter(plotter.getName(), plotter);

@@ -490,7 +490,7 @@ export class ChartManager {
         if (ds.getDataCount() < 1)
             plotterNames = [".selection"];
         else
-            plotterNames = [".decoration", ".selection", ".position",".info", ".tool"];
+            plotterNames = [".decoration", ".selection",".info", ".tool", ".shortPosition", ".longPosition"];
         this.drawArea(context, area, plotterNames);
     }
 
