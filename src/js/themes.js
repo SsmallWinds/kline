@@ -63,13 +63,13 @@ export class DarkTheme extends Theme {
         this._colors = [];
 
         if (Kline.instance.reverseColor) {
-            this._colors[Theme.Color.Positive] = "#990e0e";
-            this._colors[Theme.Color.Negative] = "#19b34c";
+            this._colors[Theme.Color.Positive] = "#ff3232";
+            this._colors[Theme.Color.Negative] = "#54fcfc";
             this._colors[Theme.Color.PositiveDark] = "#3b0e08";
             this._colors[Theme.Color.NegativeDark] = "#004718";
         } else {
-            this._colors[Theme.Color.Positive] = "#19b34c";
-            this._colors[Theme.Color.Negative] = "#990e0e";
+            this._colors[Theme.Color.Positive] = "#54fcfc";
+            this._colors[Theme.Color.Negative] = "#ff3232";
             this._colors[Theme.Color.PositiveDark] = "#004718";
             this._colors[Theme.Color.NegativeDark] = "#3b0e08";
         }
@@ -88,8 +88,8 @@ export class DarkTheme extends Theme {
         this._colors[Theme.Color.Grid2] = "#f00";
         this._colors[Theme.Color.Grid3] = "#888";
         this._colors[Theme.Color.Grid4] = "#aaa";
-        this._colors[Theme.Color.TextPositive] = "#1bd357";
-        this._colors[Theme.Color.TextNegative] = "#ff6f5e";
+        this._colors[Theme.Color.TextPositive] = "#f00";
+        this._colors[Theme.Color.TextNegative] = "#0f0";
         this._colors[Theme.Color.Text0] = "#444";
         this._colors[Theme.Color.Text1] = "#666";
         this._colors[Theme.Color.Text2] = "#fd9f25";
