@@ -1838,12 +1838,14 @@ export class PositionPricePlotter extends NamedObject {
         let theme = mgr.getTheme(this.getFrameName());
         context.fillStyle = theme.getColor(themes.Theme.Color.Background);
         context.fill();
-        context.strokeStyle = theme.getColor(themes.Theme.Color.Grid4);
+        //context.strokeStyle = theme.getColor(themes.Theme.Color.Grid4);
+        context.strokeStyle = lineColor;
         context.stroke();
         context.font = theme.getFont(themes.Theme.Font.Default);
         context.textAlign = "center";
         context.textBaseline = "middle";
-        context.fillStyle = theme.getColor(themes.Theme.Color.Text3);
+        //context.fillStyle = theme.getColor(themes.Theme.Color.Text3);
+        context.fillStyle = lineColor;
         let digits = 2;
         if (range.getNameObject().getCompAt(2) === "main") {
             digits = mgr.getDataSource(this.getDataSourceName()).getDecimalDigits();
