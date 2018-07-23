@@ -121,8 +121,9 @@ export class Chart {
     setCurrentPeriod(period) {
         this._range = Kline.instance.periodMap[period];
         if (Kline.instance.type === "stomp" && Kline.instance.stompClient.readyState === 1) {
-            Kline.instance.subscribed.unsubscribe();
-            Kline.instance.subscribed = Kline.instance.stompClient.send(Kline.instance.subscribePath + '/' + Kline.instance.symbol + '/' + this._range);
+            //this version only receive push ..
+            //Kline.instance.subscribed.unsubscribe();
+            //Kline.instance.subscribed = Kline.instance.stompClient.send(Kline.instance.subscribePath + '/' + Kline.instance.symbol + '/' + this._range);
         }
         this.updateDataAndDisplay();
         Kline.instance.onRangeChange(this._range);
