@@ -50,7 +50,7 @@ export class ChartSettings {
                 _indic_param[_name[i]].push(param[j]);
             }
         }
-        let _chart_style = 'CandleStick';
+        let _chart_style = 'CandleStickHLC';
         let _m_indic = 'MA';
         let _indic = ['VOLUME', 'MACD'];
         let _range = '15m';
