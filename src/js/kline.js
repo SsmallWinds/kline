@@ -259,6 +259,10 @@ export default class Kline {
         }
     }
 
+    getControl(){
+       return Control;
+    }
+
     switchSize()
     {
         Kline.instance.isSized = !Kline.instance.isSized;
@@ -267,7 +271,7 @@ export default class Kline {
                 position: 'fixed',
                 left: '0',
                 right: '0',
-                top: '-25',
+                top: '-30',
                 bottom: '0',
                 width: '100%',
                 height: '100%',
@@ -375,7 +379,6 @@ export default class Kline {
 
                 });
             $("#chart_toolbar_periods_vert ul a").click(function () {
-
                 Control.switchPeriod($(this).parent().attr('name'));
 
             });

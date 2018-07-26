@@ -53,7 +53,7 @@ export class ChartSettings {
         let _chart_style = 'CandleStickHLC';
         let _m_indic = 'MA';
         let _indic = ['VOLUME', 'MACD'];
-        let _range = '15m';
+        let _range = 'line';
         let _frame = {};
         _frame.chartStyle = _chart_style;
         _frame.mIndic = _m_indic;
