@@ -161,6 +161,7 @@ export class Control {
             }
             return;
         }
+        /*
         if (Kline.instance.data.trades && Kline.instance.data.trades.length > 0) {
             KlineTrade.instance.pushTrades(Kline.instance.data.trades);
             KlineTrade.instance.klineTradeInit = true;
@@ -168,6 +169,13 @@ export class Control {
         if (Kline.instance.data.depths) {
             KlineTrade.instance.updateDepth(Kline.instance.data.depths);
         }
+        */
+
+        if (Kline.instance.data.position && Kline.instance.data.position.length > 0)
+        {
+            ChartManager.instance.setPositionData(Kline.instance.data.position);
+        }
+
         Control.clearRefreshCounter();
 
         if (Kline.instance.type === 'poll') {

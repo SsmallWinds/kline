@@ -1817,9 +1817,10 @@ export class PositionPricePlotter extends NamedObject {
         //    return;
         //}
         let isLong = this.getCustomName().indexOf("long") >=0;
-        let position =  isLong ? 100 : 99.5;
-        let pnl = -1000;
-        let count = 1;
+        let p = mgr.getPositionData();
+        let position =  isLong ? mgr.getPositionData()[0][0] : mgr.getPositionData()[1][0];
+        let pnl = isLong ? mgr.getPositionData()[0][1] : mgr.getPositionData()[1][1];
+        let count = isLong ? mgr.getPositionData()[0][2] : mgr.getPositionData()[1][2];
         let lineColor = isLong ? "#f00" : "#0f0";
         let pnlColor = pnl >= 0 ? "#f00" : "#0f0";
         let y = range.toY(position);

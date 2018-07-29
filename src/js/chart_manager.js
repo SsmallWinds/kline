@@ -42,6 +42,7 @@ export class ChartManager {
     constructor() {
         this._dataSources = {};
         this._dataSourceCache = {};
+        this._positionData = {};
         this._dataProviders = {};
         this._frames = {};
         this._areas = {};
@@ -140,6 +141,14 @@ export class ChartManager {
 
     setLanguage(lang) {
         this._language = lang;
+    }
+
+    setPositionData(data){
+        this._positionData = data;
+    }
+
+    getPositionData(){
+        return this._positionData;
     }
 
     setThemeName(frameName, themeName) {

@@ -48,6 +48,20 @@
 
 <script type="text/javascript">
 
+    /*
+    * json format
+    *
+    * {
+    *   "data":
+    *   {
+    *       "lines":[[open,high,low,close,volume],[]]，
+    *       "position":[[averagePrice,pnl,count],[]]
+    *   },
+    *   "success":true
+    * }
+    *
+    * */
+
     var kline = new Kline({
         reverseColor:true,
         element: "#kline_container",
