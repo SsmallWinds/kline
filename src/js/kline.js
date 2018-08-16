@@ -263,6 +263,24 @@ export default class Kline {
        return Control;
     }
 
+    fullScreen(){
+
+        $(Kline.instance.element).css({
+            position: 'fixed',
+            left: '0',
+            right: '0',
+            top: '-30',
+            bottom: '0',
+            width: '100%',
+            height: '100%',
+            zIndex: '10000'
+        });
+
+        Control.onSize();
+        $('html,body').css({width: '100%', height: '100%', overflow: 'hidden'});
+
+    }
+
     switchSize()
     {
         Kline.instance.isSized = !Kline.instance.isSized;
